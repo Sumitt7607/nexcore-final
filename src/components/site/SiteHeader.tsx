@@ -33,7 +33,7 @@ export function SiteHeader() {
     >
       <div className="container-p mx-auto flex h-18 max-w-7xl items-center justify-between py-3">
         <Link to="/" className="group flex items-center">
-          <img src="/logo.png" alt="Nexcore Technologies" className="h-28 sm:h-32 w-auto object-contain" />
+          <img src="/logo.png" alt="Nexcore Technologies" className="h-32 sm:h-36 w-auto object-contain" />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
