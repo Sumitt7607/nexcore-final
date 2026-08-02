@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet, useLocation } from "@tanstack/react-router";
 import { useState } from "react";
 import { Search, ArrowRight, Clock, Sparkles } from "lucide-react";
 import { blogPosts } from "@/lib/blogs-data";
@@ -15,12 +15,23 @@ export const Route = createFileRoute("/blog")({
     ],
     links: [{ rel: "canonical", href: "/blog" }],
   }),
-  component: BlogPage,
+  component: BlogRouteWrapper,
 });
+
+function BlogRouteWrapper() {
+  const location = useLocation();
+
+  // If navigating to an article child page (e.g. /blog/cpl-reduction-d2c-playbook), render the child route via Outlet!
+  if (location.pathname !== "/blog" && location.pathname !== "/blog/") {
+    return <Outlet />;
+  }
+
+  return <BlogPageContent />;
+}
 
 const categories = ["All", "Ads", "Websites", "SEO", "Branding", "AI"];
 
-function BlogPage() {
+function BlogPageContent() {
   const [selectedCat, setSelectedCat] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
 

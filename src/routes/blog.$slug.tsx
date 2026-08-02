@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Clock, Calendar, ArrowRight, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
-import { getBlogPost, blogPosts } from "@/lib/blogs-data";
+import { getBlogPost, blogPosts, type BlogPost } from "@/lib/blogs-data";
 import { CTABanner } from "@/components/site/HomeSections";
 
 export const Route = createFileRoute("/blog/$slug")({
@@ -31,7 +31,7 @@ export const Route = createFileRoute("/blog/$slug")({
 
 function BlogPostDetail() {
   const { post } = Route.useLoaderData();
-  const related = blogPosts.filter((b) => b.slug !== post.slug).slice(0, 3);
+  const related = blogPosts.filter((b: BlogPost) => b.slug !== post.slug).slice(0, 3);
   const [openedTimestamp, setOpenedTimestamp] = useState("");
 
   useEffect(() => {
@@ -130,7 +130,7 @@ function BlogPostDetail() {
               <h3 className="font-display text-lg font-bold">Key Takeaways</h3>
             </div>
             <ul className="mt-4 space-y-2.5">
-              {post.keyTakeaways.map((takeaway, i) => (
+              {post.keyTakeaways.map((takeaway: string, i: number) => (
                 <li key={i} className="flex items-start gap-2.5 text-sm text-navy/90">
                   <span className="mt-1 grid size-4 shrink-0 place-items-center rounded-full bg-brand text-[10px] font-bold text-navy">
                     ✓
@@ -144,7 +144,7 @@ function BlogPostDetail() {
 
         {/* Content Sections */}
         <div className="space-y-12">
-          {post.sections.map((section, idx) => (
+          {post.sections.map((section, idx: number) => (
             <section key={idx} className="space-y-4">
               <h2 className="font-display text-2xl font-bold text-navy sm:text-3xl">
                 {section.heading}
@@ -156,7 +156,7 @@ function BlogPostDetail() {
               {/* Bullet points if available */}
               {section.bulletPoints && (
                 <ul className="my-4 space-y-2 pl-2">
-                  {section.bulletPoints.map((pt, pIdx) => (
+                  {section.bulletPoints.map((pt: string, pIdx: number) => (
                     <li key={pIdx} className="flex items-start gap-2 text-sm sm:text-base text-navy/80">
                       <span className="mt-2 size-1.5 shrink-0 rounded-full bg-secondary" />
                       <span>{pt}</span>
@@ -217,7 +217,7 @@ function BlogPostDetail() {
         <div className="container-p mx-auto max-w-7xl">
           <h3 className="font-display text-2xl font-bold text-navy">Related Articles</h3>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {related.map((b) => (
+            {related.map((b: BlogPost) => (
               <Link
                 key={b.slug}
                 to="/blog/$slug"
