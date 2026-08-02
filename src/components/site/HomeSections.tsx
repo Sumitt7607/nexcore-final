@@ -539,7 +539,7 @@ const portfolio = [
   },
   {
     title: "GradeLab Studios",
-    tag: "Branding",
+    tag: "Website",
     metric: "Cinematic Growth",
     image: "/projects/gradelab.png",
     desc: "High-End Video Production & Cinematic Brand Storytelling",
@@ -547,7 +547,7 @@ const portfolio = [
   },
   {
     title: "CR Fitness",
-    tag: "Branding",
+    tag: "Website",
     metric: "3.8× Memberships",
     image: "/projects/crfitness.png",
     desc: "Premium Fitness Brand Identity & Membership Experience Portal",
@@ -640,22 +640,24 @@ export function PortfolioPreview() {
             key={p.title}
             className="group flex flex-col overflow-hidden rounded-2xl sm:rounded-3xl border border-border bg-white transition-all hover:-translate-y-1.5 hover:border-brand hover:shadow-2xl"
           >
-            {/* Browser Header */}
-            <div className="flex items-center gap-1 sm:gap-1.5 bg-slate-900 px-3 sm:px-4 py-2 sm:py-2.5">
-              <div className="size-2 sm:size-2.5 rounded-full bg-red-500/80" />
-              <div className="size-2 sm:size-2.5 rounded-full bg-yellow-500/80" />
-              <div className="size-2 sm:size-2.5 rounded-full bg-green-500/80" />
-              <div className="ml-1.5 sm:ml-2 flex-1 truncate rounded-md bg-white/10 px-2 sm:px-3 py-0.5 font-mono text-[9px] sm:text-[10px] text-white/50">
-                https://{p.url}
+            {/* Browser Header - Only for Website */}
+            {p.tag === "Website" && (
+              <div className="flex items-center gap-1 sm:gap-1.5 bg-slate-900 px-3 sm:px-4 py-2 sm:py-2.5">
+                <div className="size-2 sm:size-2.5 rounded-full bg-red-500/80" />
+                <div className="size-2 sm:size-2.5 rounded-full bg-yellow-500/80" />
+                <div className="size-2 sm:size-2.5 rounded-full bg-green-500/80" />
+                <div className="ml-1.5 sm:ml-2 flex-1 truncate rounded-md bg-white/10 px-2 sm:px-3 py-0.5 font-mono text-[9px] sm:text-[10px] text-white/50">
+                  https://{p.url}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Image Preview */}
-            <div className="relative h-36 sm:h-56 overflow-hidden bg-slate-100">
+            <div className={`relative ${p.tag === "Branding" ? "h-48 sm:h-64" : "h-36 sm:h-56"} overflow-hidden bg-slate-100`}>
               <img
                 src={p.image}
                 alt={p.title}
-                className="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105"
+                className={`h-full w-full ${p.tag === "Branding" ? "object-cover object-center" : "object-cover object-top"} transition duration-500 group-hover:scale-105`}
               />
               <div className="absolute right-2 top-2 sm:right-3 sm:top-3 rounded-full bg-navy/80 px-2 sm:px-3 py-0.5 sm:py-1 text-[9px] sm:text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-md">
                 {p.tag}
@@ -672,7 +674,9 @@ export function PortfolioPreview() {
                 <p className="mt-1 text-[11px] sm:text-xs leading-relaxed text-muted-foreground line-clamp-2 sm:line-clamp-none">{p.desc}</p>
               </div>
               <div className="mt-3 sm:mt-5 flex items-center justify-between border-t border-border/50 pt-3 sm:pt-4">
-                <span className="text-[10px] sm:text-xs font-semibold text-muted-foreground">Live Project</span>
+                <span className="text-[10px] sm:text-xs font-semibold text-muted-foreground">
+                  {p.tag === "Website" ? "Live Website" : p.tag === "Google Ads" ? "Ad Campaign" : "Brand Design"}
+                </span>
                 <Link
                   to="/portfolio"
                   className="inline-flex items-center gap-1 text-[10px] sm:text-xs font-bold text-secondary transition group-hover:text-navy group-hover:underline"
