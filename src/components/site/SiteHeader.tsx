@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, ChevronDown, Sparkles } from "lucide-react";
+import { Menu, X, ChevronDown, Sparkles, Phone } from "lucide-react";
 import { serviceGroups } from "@/lib/services-data";
 import { cn } from "@/lib/utils";
 
@@ -33,7 +33,7 @@ export function SiteHeader() {
     >
       <div className="container-p mx-auto flex h-18 max-w-7xl items-center justify-between py-3">
         <Link to="/" className="group flex items-center">
-          <img src="/logo.png" alt="Nexcore Technologies" className="h-10 w-auto object-contain" />
+          <img src="/logo.png" alt="Nexcore Technologies" className="h-12 sm:h-14 w-auto object-contain" />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
@@ -113,13 +113,22 @@ export function SiteHeader() {
           </a>
         </div>
 
-        <button
-          className="grid size-10 place-items-center rounded-xl border border-border lg:hidden"
-          onClick={() => setOpen((o) => !o)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <a
+            href="tel:7607696315"
+            className="inline-flex items-center gap-1.5 rounded-full bg-green-600 hover:bg-green-700 text-white px-3.5 py-2 text-xs font-bold shadow-md transition transform active:scale-95"
+          >
+            <Phone className="size-3.5" />
+            Call Now
+          </a>
+          <button
+            className="grid size-10 place-items-center rounded-xl border border-border"
+            onClick={() => setOpen((o) => !o)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
