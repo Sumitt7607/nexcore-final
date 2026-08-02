@@ -765,41 +765,116 @@ export function CTABanner() {
 
 /* ---------------- Testimonials ---------------- */
 const testimonials = [
-  { name: "Ananya Sharma", role: "Founder, Vertex Retail", quote: "Nexcore rebuilt our storefront and paired it with Google Ads. Revenue nearly tripled inside a quarter — best investment we've made." },
-  { name: "Rahul Menon", role: "CMO, Ascend SaaS", quote: "Their Meta Ads team cut our CPL by 42% and doubled qualified demos. Ridiculously good work." },
-  { name: "Sophia Nair", role: "CEO, Halcyon Studio", quote: "Design, brand, dev — one team, obsessive quality. It felt like an in-house team, but sharper." },
-  { name: "David Park", role: "COO, Kinetic Labs", quote: "They shipped our MVP in 6 weeks and it converts. Communication was flawless throughout." },
+  {
+    initials: "CS",
+    name: "Career4S Team",
+    role: "Founder, Career4S",
+    category: "EdTech",
+    avatarBg: "bg-navy text-white",
+    quote: "Nexcore rebuilt our online learning platform and scaled our student enrollment past 10,000+. Communication was seamless and website load times are sub-second.",
+  },
+  {
+    initials: "RZ",
+    name: "Ruzann Leadership",
+    role: "E-Commerce Director, Ruzann",
+    category: "E-Commerce",
+    avatarBg: "bg-gradient-to-br from-secondary to-navy text-white",
+    quote: "Their Meta Ads & custom storefront design cut our CPL drastically and delivered a 3.2x ROAS in the first month. Ridiculously good ROI.",
+  },
+  {
+    initials: "ML",
+    name: "Manshu Learning",
+    role: "Head of Growth, Manshu Learning",
+    category: "EdTech",
+    avatarBg: "bg-[#0A66C2] text-white",
+    quote: "Design, branding, and dev — all executed with high precision by one unified team. 5,000+ enrolled students with zero downtime.",
+  },
+  {
+    initials: "GL",
+    name: "GradeLab Studios",
+    role: "Creative Director, GradeLab Studios",
+    category: "Media Studio",
+    avatarBg: "bg-[#1877F2] text-white",
+    quote: "They designed our website to reflect cinematic excellence. It felt like an in-house elite team, but faster and sharper.",
+  },
+  {
+    initials: "CR",
+    name: "CR Fitness Gym",
+    role: "Managing Director, CR Fitness",
+    category: "Fitness & Gym",
+    avatarBg: "bg-emerald-700 text-white",
+    quote: "We saw a 3.8x spike in membership leads right after launching the new site and local search ads campaign.",
+  },
+  {
+    initials: "CF",
+    name: "Champs Fighter",
+    role: "Brand Owner, Champs Fighter",
+    category: "Sports Packaging",
+    avatarBg: "bg-red-600 text-white",
+    quote: "The brand packaging & promotional ad suite designed by Nexcore completely elevated our market presence.",
+  },
 ];
+
 export function Testimonials() {
-  const [i, setI] = useState(0);
+  const [activeIdx, setActiveIdx] = useState(0);
+
   useEffect(() => {
-    const t = setInterval(() => setI((n) => (n + 1) % testimonials.length), 5000);
+    const t = setInterval(() => setActiveIdx((n) => (n + 1) % testimonials.length), 5000);
     return () => clearInterval(t);
   }, []);
+
   return (
-    <section className="bg-surface">
-      <div className="container-p mx-auto max-w-7xl py-24">
+    <section className="bg-surface py-20 lg:py-28">
+      <div className="container-p mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">Kind words</p>
-          <h2 className="mt-3 font-display text-4xl font-bold text-navy lg:text-5xl">Loved by founders and marketing leaders.</h2>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">Kind Words</p>
+          <h2 className="mt-3 font-display text-4xl font-bold text-navy lg:text-5xl">
+            Loved by founders and marketing leaders.
+          </h2>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Real feedback from companies and brands we have built and scaled.
+          </p>
         </div>
-        <div className="relative mt-14 grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
+
+        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, idx) => (
             <div
               key={t.name}
-              className={`rounded-2xl sm:rounded-3xl border border-white/60 bg-white/70 p-4 sm:p-6 shadow-soft backdrop-blur transition ${idx === i ? "ring-2 ring-brand" : ""}`}
+              className={`relative flex flex-col justify-between rounded-3xl border bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-elegant ${
+                idx === activeIdx ? "border-brand ring-2 ring-brand/40 shadow-md" : "border-border/80"
+              }`}
             >
-              <Quote className="size-6 text-brand" />
-              <p className="mt-3 text-sm leading-relaxed text-foreground">"{t.quote}"</p>
-              <div className="mt-6 flex items-center gap-3">
-                <div className="grid size-10 place-items-center rounded-full bg-gradient-to-br from-secondary to-navy font-display text-sm font-bold text-white">
-                  {t.name.split(" ").map((n) => n[0]).join("")}
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="rounded-full bg-softgreen px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-navy">
+                    {t.category}
+                  </span>
+                  <Quote className="size-6 text-lime-500" strokeWidth={2.5} />
                 </div>
-                <div>
-                  <p className="text-sm font-semibold text-navy">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">{t.role}</p>
+
+                <p className="mt-4 text-sm leading-relaxed text-navy/90 font-medium">
+                  "{t.quote}"
+                </p>
+              </div>
+
+              <div className="mt-8 flex items-center justify-between border-t border-border/50 pt-4">
+                <div className="flex items-center gap-3">
+                  <div
+                    className={`grid size-10 shrink-0 place-items-center rounded-full font-display text-xs font-bold shadow-xs ${t.avatarBg}`}
+                  >
+                    {t.initials}
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-navy leading-tight">{t.name}</p>
+                    <p className="text-xs text-muted-foreground leading-tight">{t.role}</p>
+                  </div>
                 </div>
-                <div className="ml-auto flex gap-0.5">{Array.from({ length: 5 }).map((_, k) => <Star key={k} className="size-3.5 fill-brand text-brand" />)}</div>
+
+                <div className="flex gap-0.5">
+                  {Array.from({ length: 5 }).map((_, k) => (
+                    <Star key={k} className="size-3.5 fill-lime-500 text-lime-500" />
+                  ))}
+                </div>
               </div>
             </div>
           ))}
