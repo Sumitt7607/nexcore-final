@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import {
-  ArrowRight, Star, Zap, Search, Rocket, Target,
+  ArrowRight, Star, Zap, Search, Rocket, Target, ChevronLeft, ChevronRight,
   BarChart3, LineChart, Globe, PenTool, Video, Bot,
   Check, Sparkles, TrendingUp, Users, Award, Clock, Quote,
   Phone, Mail, MapPin, MessageCircle, Plus, Minus,
@@ -817,14 +817,26 @@ const testimonials = [
 
 export function Testimonials() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const total = testimonials.length;
 
   useEffect(() => {
-    const t = setInterval(() => setActiveIdx((n) => (n + 1) % testimonials.length), 5000);
+    const t = setInterval(() => setActiveIdx((n) => (n + 1) % total), 5000);
     return () => clearInterval(t);
-  }, []);
+  }, [total]);
+
+  const prev = () => setActiveIdx((n) => (n - 1 + total) % total);
+  const next = () => setActiveIdx((n) => (n + 1) % total);
+
+  const getPos = (idx: number) => {
+    const diff = (idx - activeIdx + total) % total;
+    if (diff === 0) return "center";
+    if (diff === 1 || diff === total - 2) return diff === 1 ? "right" : "right2";
+    if (diff === total - 1) return "left";
+    return "hidden";
+  };
 
   return (
-    <section className="bg-surface py-20 lg:py-28">
+    <section className="bg-surface py-20 lg:py-28 overflow-hidden">
       <div className="container-p mx-auto max-w-7xl">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">Kind Words</p>
@@ -836,48 +848,104 @@ export function Testimonials() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((t, idx) => (
-            <div
-              key={t.name}
-              className={`relative flex flex-col justify-between rounded-3xl border bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-elegant ${
-                idx === activeIdx ? "border-brand ring-2 ring-brand/40 shadow-md" : "border-border/80"
-              }`}
-            >
-              <div>
+        {/* 3D Carousel */}
+        <div className="relative mt-16 flex items-center justify-center" style={{ height: "360px" }}>
+          {testimonials.map((t, idx) => {
+            const pos = getPos(idx);
+            if (pos === "hidden" || pos === "right2") return null;
+
+            const isCenter = pos === "center";
+            const isLeft = pos === "left";
+            const isRight = pos === "right";
+
+            return (
+              <div
+                key={t.name}
+                onClick={() => setActiveIdx(idx)}
+                className="absolute w-72 sm:w-80 rounded-3xl bg-white p-6 shadow-xl cursor-pointer select-none transition-all duration-500 ease-in-out"
+                style={{
+                  transform: isCenter
+                    ? "translateX(0) scale(1) rotateY(0deg)"
+                    : isLeft
+                    ? "translateX(-80%) scale(0.82) rotateY(12deg)"
+                    : "translateX(80%) scale(0.82) rotateY(-12deg)",
+                  opacity: isCenter ? 1 : 0.55,
+                  zIndex: isCenter ? 10 : 5,
+                  filter: isCenter ? "none" : "blur(0.5px)",
+                  boxShadow: isCenter
+                    ? "0 24px 60px rgba(0,0,0,0.14)"
+                    : "0 8px 24px rgba(0,0,0,0.08)",
+                }}
+              >
+                {/* Category Pill */}
                 <div className="flex items-center justify-between">
                   <span className="rounded-full bg-softgreen px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-navy">
                     {t.category}
                   </span>
-                  <Quote className="size-6 text-lime-500" strokeWidth={2.5} />
                 </div>
 
-                <p className="mt-4 text-sm leading-relaxed text-navy/90 font-medium">
-                  "{t.quote}"
-                </p>
-              </div>
-
-              <div className="mt-8 flex items-center justify-between border-t border-border/50 pt-4">
-                <div className="flex items-center gap-3">
-                  <div
-                    className={`grid size-10 shrink-0 place-items-center rounded-full font-display text-xs font-bold shadow-xs ${t.avatarBg}`}
-                  >
+                {/* Avatar + Name Row */}
+                <div className="mt-4 flex items-center gap-3">
+                  <div className={`grid size-14 shrink-0 place-items-center rounded-full font-display text-base font-bold shadow-md ${t.avatarBg}`}>
                     {t.initials}
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-navy leading-tight">{t.name}</p>
-                    <p className="text-xs text-muted-foreground leading-tight">{t.role}</p>
+                    <p className="text-base font-bold text-navy leading-tight">{t.name}</p>
+                    <p className="text-xs font-semibold text-secondary leading-tight">{t.category}</p>
+                    <p className="text-[11px] text-muted-foreground leading-tight">{t.role}</p>
+                    <div className="mt-1 flex gap-0.5">
+                      {Array.from({ length: 5 }).map((_, k) => (
+                        <Star key={k} className="size-3 fill-orange-400 text-orange-400" />
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex gap-0.5">
-                  {Array.from({ length: 5 }).map((_, k) => (
-                    <Star key={k} className="size-3.5 fill-lime-500 text-lime-500" />
-                  ))}
+                {/* Quote */}
+                <div className="relative mt-5">
+                  <Quote className="absolute -left-1 -top-1 size-5 text-muted-foreground/30" />
+                  <p className="pl-4 text-sm leading-relaxed text-navy/80 italic">
+                    {t.quote}
+                  </p>
+                  <Quote className="absolute -bottom-1 right-0 size-5 rotate-180 text-muted-foreground/30" />
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
+        </div>
+
+        {/* Navigation */}
+        <div className="mt-10 flex flex-col items-center gap-5">
+          {/* Dots */}
+          <div className="flex items-center gap-2">
+            {testimonials.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setActiveIdx(idx)}
+                className={`rounded-full transition-all duration-300 ${
+                  idx === activeIdx
+                    ? "w-6 h-2.5 bg-secondary"
+                    : "w-2.5 h-2.5 bg-navy/20 hover:bg-navy/40"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Prev / Next */}
+          <div className="flex items-center gap-4">
+            <button
+              onClick={prev}
+              className="grid size-10 place-items-center rounded-full border border-border bg-white shadow-sm text-navy transition hover:bg-navy hover:text-white"
+            >
+              <ChevronLeft className="size-5" />
+            </button>
+            <button
+              onClick={next}
+              className="grid size-10 place-items-center rounded-full border border-border bg-white shadow-sm text-navy transition hover:bg-navy hover:text-white"
+            >
+              <ChevronRight className="size-5" />
+            </button>
+          </div>
         </div>
       </div>
     </section>
