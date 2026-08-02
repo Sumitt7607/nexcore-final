@@ -143,6 +143,7 @@ function RootComponent() {
         </main>
         <SiteFooter />
         <FloatingSocials />
+        <FloatingWhatsApp />
       </div>
     </QueryClientProvider>
   );
