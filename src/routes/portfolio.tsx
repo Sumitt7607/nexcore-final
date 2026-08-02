@@ -249,11 +249,26 @@ function Portfolio() {
                         Book free Demo
                       </Link>
                     </>
+                  ) : p.tag === "Branding" ? (
+                    <>
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-surface px-3 py-1 text-xs font-semibold text-navy">
+                        <span className="size-1.5 rounded-full bg-green-500" />
+                        Brand Design
+                      </span>
+                      <a
+                        href="https://photos.google.com/u/4/share/AF1QipP-rW5OuQ4kSLLOjZYt0lSnhnnjM8X0YqeiujPMpkF8XGYfwOfu5WhEBnDsD16bHg?pli=1&pageId=none&key=c0ZkYWpmNUZodzdxczFwaTV6TmctQUNCQnNRbFdn"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs font-bold text-secondary transition hover:text-navy hover:underline"
+                      >
+                        See More Brands <ArrowRight className="size-3.5" />
+                      </a>
+                    </>
                   ) : (
                     <>
                       <span className="inline-flex items-center gap-1.5 rounded-full bg-surface px-3 py-1 text-xs font-semibold text-navy">
                         <span className="size-1.5 rounded-full bg-green-500" />
-                        {p.tag === "Google Ads" ? "Ad Campaign" : "Brand Design"}
+                        Ad Campaign
                       </span>
                       <Link
                         to="/contact"

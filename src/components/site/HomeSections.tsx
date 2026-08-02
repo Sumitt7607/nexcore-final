@@ -697,10 +697,24 @@ export function PortfolioPreview() {
                       Book free Demo
                     </Link>
                   </>
+                ) : p.tag === "Branding" ? (
+                  <>
+                    <span className="text-[10px] sm:text-xs font-semibold text-muted-foreground">
+                      Brand Design
+                    </span>
+                    <a
+                      href="https://photos.google.com/u/4/share/AF1QipP-rW5OuQ4kSLLOjZYt0lSnhnnjM8X0YqeiujPMpkF8XGYfwOfu5WhEBnDsD16bHg?pli=1&pageId=none&key=c0ZkYWpmNUZodzdxczFwaTV6TmctQUNCQnNRbFdn"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-[10px] sm:text-xs font-bold text-secondary transition hover:text-navy hover:underline"
+                    >
+                      See More Brands <ArrowRight className="size-3 sm:size-3.5" />
+                    </a>
+                  </>
                 ) : (
                   <>
                     <span className="text-[10px] sm:text-xs font-semibold text-muted-foreground">
-                      {p.tag === "Google Ads" ? "Ad Campaign" : "Brand Design"}
+                      Ad Campaign
                     </span>
                     <Link
                       to="/portfolio"
