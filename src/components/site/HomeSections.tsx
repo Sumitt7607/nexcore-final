@@ -520,6 +520,7 @@ const portfolio = [
     image: "/projects/career4s.png",
     desc: "Education & Admission Counseling Portal for India & Abroad",
     url: "career4s.com",
+    liveUrl: "https://www.career4s.com/",
   },
   {
     title: "Ruzann",
@@ -528,6 +529,7 @@ const portfolio = [
     image: "/projects/ruzann.png",
     desc: "AI & Coding Learning Platform for Kids — Interactive & Gamified",
     url: "ruzann.com",
+    liveUrl: "https://www.ruzann.com/",
   },
   {
     title: "Manshu Learning",
@@ -536,6 +538,7 @@ const portfolio = [
     image: "/projects/manshu.png",
     desc: "Professional Excellence & Corporate Training Platform",
     url: "manshulearning.com",
+    liveUrl: "https://www.manshulearning.com/",
   },
   {
     title: "GradeLab Studios",
@@ -544,6 +547,7 @@ const portfolio = [
     image: "/projects/gradelab.png",
     desc: "High-End Video Production & Cinematic Brand Storytelling",
     url: "gradelabstudios.com",
+    liveUrl: "https://www.gradelabstudios.com/",
   },
   {
     title: "CR Fitness",
@@ -551,7 +555,8 @@ const portfolio = [
     metric: "3.8× Memberships",
     image: "/projects/crfitness.png",
     desc: "Premium Fitness Brand Identity & Membership Experience Portal",
-    url: "crfitness.com",
+    url: "crfitnessgym86.in",
+    liveUrl: "https://www.crfitnessgym86.in/",
   },
   {
     title: "Champs Fighter",
@@ -674,15 +679,37 @@ export function PortfolioPreview() {
                 <p className="mt-1 text-[11px] sm:text-xs leading-relaxed text-muted-foreground line-clamp-2 sm:line-clamp-none">{p.desc}</p>
               </div>
               <div className="mt-3 sm:mt-5 flex items-center justify-between border-t border-border/50 pt-3 sm:pt-4">
-                <span className="text-[10px] sm:text-xs font-semibold text-muted-foreground">
-                  {p.tag === "Website" ? "Live Website" : p.tag === "Google Ads" ? "Ad Campaign" : "Brand Design"}
-                </span>
-                <Link
-                  to="/portfolio"
-                  className="inline-flex items-center gap-1 text-[10px] sm:text-xs font-bold text-secondary transition group-hover:text-navy group-hover:underline"
-                >
-                  View <ArrowRight className="size-3 sm:size-3.5" />
-                </Link>
+                {p.tag === "Website" ? (
+                  <>
+                    <a
+                      href={p.liveUrl || `https://www.${p.url}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 sm:gap-1.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white px-2.5 sm:px-3 py-1 text-[10px] sm:text-xs font-bold transition shadow-sm"
+                    >
+                      <span className="size-1.5 sm:size-2 rounded-full bg-green-400 animate-pulse" />
+                      Live Website ↗
+                    </a>
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center gap-1 rounded-full bg-red-600 hover:bg-red-700 text-white px-2.5 sm:px-3.5 py-1 text-[10px] sm:text-xs font-bold shadow-md hover:shadow-lg transition transform active:scale-95"
+                    >
+                      Book free Demo
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-[10px] sm:text-xs font-semibold text-muted-foreground">
+                      {p.tag === "Google Ads" ? "Ad Campaign" : "Brand Design"}
+                    </span>
+                    <Link
+                      to="/portfolio"
+                      className="inline-flex items-center gap-1 text-[10px] sm:text-xs font-bold text-secondary transition group-hover:text-navy group-hover:underline"
+                    >
+                      View <ArrowRight className="size-3 sm:size-3.5" />
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>

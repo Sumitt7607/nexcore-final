@@ -11,6 +11,7 @@ const projects = [
     image: "/projects/career4s.png",
     desc: "Education & Admission Counseling Portal for India & Abroad. Trusted by over 10,000 students for their academic journey.",
     url: "career4s.com",
+    liveUrl: "https://www.career4s.com/",
     isDashboard: false,
     stats: [],
   },
@@ -21,6 +22,7 @@ const projects = [
     image: "/projects/ruzann.png",
     desc: "AI & Coding Learning Platform built for kids. Interactive video courses, live cohorts & AI Sandbox for creative skill-building.",
     url: "ruzann.com",
+    liveUrl: "https://www.ruzann.com/",
     isDashboard: false,
     stats: [],
   },
@@ -31,6 +33,7 @@ const projects = [
     image: "/projects/manshu.png",
     desc: "Professional excellence & corporate training platform delivering high-impact learning solutions to organizations and teams.",
     url: "manshulearning.com",
+    liveUrl: "https://www.manshulearning.com/",
     isDashboard: false,
     stats: [],
   },
@@ -41,6 +44,7 @@ const projects = [
     image: "/projects/gradelab.png",
     desc: "High-end video production studio combining cinematic storytelling with strategic digital marketing for measurable brand growth.",
     url: "gradelabstudios.com",
+    liveUrl: "https://www.gradelabstudios.com/",
     isDashboard: false,
     stats: [],
   },
@@ -50,7 +54,8 @@ const projects = [
     metric: "3.8× Memberships",
     image: "/projects/crfitness.png",
     desc: "Premium fitness brand identity & membership experience portal. Designed to convert visitors into loyal gym members.",
-    url: "crfitness.com",
+    url: "crfitnessgym86.in",
+    liveUrl: "https://www.crfitnessgym86.in/",
     isDashboard: false,
     stats: [],
   },
@@ -226,16 +231,38 @@ function Portfolio() {
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
                 </div>
                 <div className="mt-6 flex items-center justify-between border-t border-border/50 pt-5">
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-surface px-3 py-1 text-xs font-semibold text-navy">
-                    <span className="size-1.5 rounded-full bg-green-500" />
-                    {p.tag === "Website" ? "Live Website" : p.tag === "Google Ads" ? "Ad Campaign" : "Brand Design"}
-                  </span>
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary transition hover:text-navy"
-                  >
-                    Work with us <ArrowRight className="size-3.5" />
-                  </Link>
+                  {p.tag === "Website" ? (
+                    <>
+                      <a
+                        href={p.liveUrl || `https://www.${p.url}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white px-3.5 py-1.5 text-xs font-bold transition shadow-sm"
+                      >
+                        <span className="size-2 rounded-full bg-green-400 animate-pulse" />
+                        Live Website ↗
+                      </a>
+                      <Link
+                        to="/contact"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-red-600 hover:bg-red-700 text-white px-3.5 sm:px-4 py-1.5 text-xs font-bold shadow-md hover:shadow-lg transition transform active:scale-95"
+                      >
+                        Book free Demo
+                      </Link>
+                    </>
+                  ) : (
+                    <>
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-surface px-3 py-1 text-xs font-semibold text-navy">
+                        <span className="size-1.5 rounded-full bg-green-500" />
+                        {p.tag === "Google Ads" ? "Ad Campaign" : "Brand Design"}
+                      </span>
+                      <Link
+                        to="/contact"
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary transition hover:text-navy"
+                      >
+                        Work with us <ArrowRight className="size-3.5" />
+                      </Link>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
