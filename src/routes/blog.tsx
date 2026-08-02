@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Search, ArrowRight, Clock, Sparkles, X, Calendar, MessageCircle } from "lucide-react";
-import { blogPosts, type BlogPost } from "@/lib/blogs-data";
+import { Search, ArrowRight, Clock, Sparkles } from "lucide-react";
+import { blogPosts } from "@/lib/blogs-data";
 import { CTABanner } from "@/components/site/HomeSections";
 
 export const Route = createFileRoute("/blog")({
@@ -23,7 +23,6 @@ const categories = ["All", "Ads", "Websites", "SEO", "Branding", "AI"];
 function BlogPage() {
   const [selectedCat, setSelectedCat] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
-  const [activeModalPost, setActiveModalPost] = useState<BlogPost | null>(null);
 
   const filteredPosts = blogPosts.filter((post) => {
     const matchesCat = selectedCat === "All" || post.category === selectedCat;
@@ -88,6 +87,7 @@ function BlogPage() {
               <Link
                 to="/blog/$slug"
                 params={{ slug: featured.slug }}
+                onClick={() => window.scrollTo(0, 0)}
                 className="group relative h-64 sm:h-80 lg:h-auto overflow-hidden block"
               >
                 <img
@@ -106,7 +106,12 @@ function BlogPage() {
                       <Clock className="size-3.5" /> {featured.readTime}
                     </span>
                   </div>
-                  <Link to="/blog/$slug" params={{ slug: featured.slug }} className="block">
+                  <Link
+                    to="/blog/$slug"
+                    params={{ slug: featured.slug }}
+                    onClick={() => window.scrollTo(0, 0)}
+                    className="block"
+                  >
                     <h2 className="mt-4 font-display text-2xl font-bold text-navy hover:text-secondary sm:text-3xl lg:text-4xl transition">
                       {featured.title}
                     </h2>
@@ -124,21 +129,14 @@ function BlogPage() {
                     />
                     <span className="text-xs font-bold text-navy">{featured.author.name}</span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => setActiveModalPost(featured)}
-                      className="rounded-full border border-navy/20 bg-surface hover:bg-navy hover:text-white px-4 py-2 text-xs font-bold text-navy transition"
-                    >
-                      Quick Read
-                    </button>
-                    <Link
-                      to="/blog/$slug"
-                      params={{ slug: featured.slug }}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-navy px-5 py-2 text-xs font-bold text-white shadow-md transition hover:bg-slate-800"
-                    >
-                      Read More <ArrowRight className="size-3.5" />
-                    </Link>
-                  </div>
+                  <Link
+                    to="/blog/$slug"
+                    params={{ slug: featured.slug }}
+                    onClick={() => window.scrollTo(0, 0)}
+                    className="inline-flex items-center gap-1.5 rounded-full bg-navy px-6 py-2.5 text-xs font-bold text-white shadow-md transition hover:bg-slate-800"
+                  >
+                    Read More <ArrowRight className="size-3.5" />
+                  </Link>
                 </div>
               </div>
             </div>
@@ -153,7 +151,12 @@ function BlogPage() {
               className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-elegant"
             >
               <div>
-                <Link to="/blog/$slug" params={{ slug: p.slug }} className="block h-48 overflow-hidden">
+                <Link
+                  to="/blog/$slug"
+                  params={{ slug: p.slug }}
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="block h-48 overflow-hidden"
+                >
                   <img
                     src={p.featuredImage}
                     alt={p.title}
@@ -169,7 +172,12 @@ function BlogPage() {
                       <Clock className="size-3" /> {p.readTime}
                     </span>
                   </div>
-                  <Link to="/blog/$slug" params={{ slug: p.slug }} className="block">
+                  <Link
+                    to="/blog/$slug"
+                    params={{ slug: p.slug }}
+                    onClick={() => window.scrollTo(0, 0)}
+                    className="block"
+                  >
                     <h3 className="mt-3 font-display text-lg font-bold text-navy group-hover:text-secondary transition">
                       {p.title}
                     </h3>
@@ -181,21 +189,14 @@ function BlogPage() {
               </div>
               <div className="flex items-center justify-between border-t border-border/50 px-6 py-4">
                 <span className="text-[11px] font-semibold text-muted-foreground">{p.publishDate}</span>
-                <div className="flex items-center gap-2">
-                  <button
-                    onClick={() => setActiveModalPost(p)}
-                    className="rounded-full border border-border bg-surface hover:bg-slate-200 px-3 py-1.5 text-xs font-bold text-navy transition"
-                  >
-                    Quick Read
-                  </button>
-                  <Link
-                    to="/blog/$slug"
-                    params={{ slug: p.slug }}
-                    className="inline-flex items-center gap-1 rounded-full bg-navy px-4 py-1.5 text-xs font-bold text-white shadow-sm transition hover:bg-slate-800"
-                  >
-                    Read More <ArrowRight className="size-3.5" />
-                  </Link>
-                </div>
+                <Link
+                  to="/blog/$slug"
+                  params={{ slug: p.slug }}
+                  onClick={() => window.scrollTo(0, 0)}
+                  className="inline-flex items-center gap-1.5 rounded-full bg-navy hover:bg-slate-800 px-4 py-2 text-xs font-bold text-white shadow-sm transition"
+                >
+                  Read More <ArrowRight className="size-3.5" />
+                </Link>
               </div>
             </div>
           ))}
@@ -216,113 +217,6 @@ function BlogPage() {
           </div>
         )}
       </div>
-
-      {/* Inline Modal Reader when Quick Read or Read More is triggered */}
-      {activeModalPost && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-navy/80 p-4 backdrop-blur-md">
-          <div className="relative my-8 max-h-[90vh] w-full max-w-3xl overflow-y-auto rounded-3xl bg-white p-6 shadow-2xl sm:p-10">
-            {/* Close Button */}
-            <button
-              onClick={() => setActiveModalPost(null)}
-              className="absolute right-4 top-4 grid size-10 place-items-center rounded-full bg-surface text-navy shadow-sm transition hover:bg-navy hover:text-white"
-            >
-              <X className="size-5" />
-            </button>
-
-            {/* Modal Header */}
-            <div className="flex flex-wrap items-center gap-3 text-xs font-semibold">
-              <span className="rounded-full bg-softgreen px-3 py-1 font-bold text-navy">
-                {activeModalPost.category}
-              </span>
-              <span className="flex items-center gap-1 text-muted-foreground">
-                <Calendar className="size-3.5" /> {activeModalPost.publishDate}
-              </span>
-              <span className="flex items-center gap-1 text-muted-foreground">
-                <Clock className="size-3.5" /> {activeModalPost.readTime}
-              </span>
-            </div>
-
-            <h2 className="mt-4 font-display text-2xl font-bold text-navy sm:text-3xl">
-              {activeModalPost.title}
-            </h2>
-
-            <div className="mt-4 flex items-center gap-3 border-y border-border/50 py-3">
-              <img
-                src={activeModalPost.author.avatar}
-                alt={activeModalPost.author.name}
-                className="size-9 rounded-full object-cover"
-              />
-              <div>
-                <p className="text-xs font-bold text-navy">{activeModalPost.author.name}</p>
-                <p className="text-[11px] text-muted-foreground">{activeModalPost.author.role}</p>
-              </div>
-            </div>
-
-            {/* Banner Image */}
-            <div className="my-6 overflow-hidden rounded-2xl">
-              <img
-                src={activeModalPost.featuredImage}
-                alt={activeModalPost.title}
-                className="h-64 w-full object-cover"
-              />
-            </div>
-
-            {/* Key Takeaways */}
-            {activeModalPost.keyTakeaways && (
-              <div className="mb-6 rounded-2xl bg-softgreen/40 p-5">
-                <div className="flex items-center gap-2 text-navy">
-                  <Sparkles className="size-4 text-secondary" />
-                  <h4 className="font-display text-sm font-bold">Key Takeaways</h4>
-                </div>
-                <ul className="mt-2 space-y-1.5 text-xs text-navy/90">
-                  {activeModalPost.keyTakeaways.map((takeaway, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="font-bold text-secondary">•</span> {takeaway}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Article Sections */}
-            <div className="space-y-6 text-sm text-navy/90">
-              {activeModalPost.sections.map((sec, idx) => (
-                <div key={idx} className="space-y-2">
-                  <h3 className="font-display text-lg font-bold text-navy">{sec.heading}</h3>
-                  <p className="leading-relaxed text-muted-foreground">{sec.body}</p>
-                  {sec.inlineImage && (
-                    <img
-                      src={sec.inlineImage.url}
-                      alt={sec.inlineImage.caption}
-                      className="my-3 rounded-xl max-h-60 w-full object-cover"
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
-
-            {/* Bottom Actions */}
-            <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-border/60 pt-6">
-              <Link
-                to="/blog/$slug"
-                params={{ slug: activeModalPost.slug }}
-                onClick={() => setActiveModalPost(null)}
-                className="inline-flex items-center gap-2 rounded-full bg-navy px-6 py-2.5 text-xs font-bold text-white shadow-md transition hover:bg-slate-800"
-              >
-                Open Full Article Page <ArrowRight className="size-4" />
-              </Link>
-              <a
-                href="https://wa.me/917607696315"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-5 py-2.5 text-xs font-bold text-white shadow-md transition hover:bg-emerald-700"
-              >
-                <MessageCircle className="size-4" /> Chat on WhatsApp
-              </a>
-            </div>
-          </div>
-        </div>
-      )}
 
       <CTABanner />
     </>

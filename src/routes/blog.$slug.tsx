@@ -1,5 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, Clock, Calendar, User, ArrowRight, Share2, Sparkles } from "lucide-react";
+import { ArrowLeft, Clock, Calendar, ArrowRight, Sparkles } from "lucide-react";
+import { useState, useEffect } from "react";
 import { getBlogPost, blogPosts } from "@/lib/blogs-data";
 import { CTABanner } from "@/components/site/HomeSections";
 
@@ -31,6 +32,22 @@ export const Route = createFileRoute("/blog/$slug")({
 function BlogPostDetail() {
   const { post } = Route.useLoaderData();
   const related = blogPosts.filter((b) => b.slug !== post.slug).slice(0, 3);
+  const [openedTimestamp, setOpenedTimestamp] = useState("");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const now = new Date();
+    const dateStr = now.toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+    const timeStr = now.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    setOpenedTimestamp(`${dateStr} • ${timeStr}`);
+  }, [post.slug]);
 
   return (
     <>
@@ -48,11 +65,13 @@ function BlogPostDetail() {
             <span className="rounded-full bg-softgreen px-3 py-1 font-bold text-navy">
               {post.category}
             </span>
-            <span className="flex items-center gap-1 text-muted-foreground">
-              <Calendar className="size-3.5" /> {post.publishDate}
+            <span className="flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-navy border border-border shadow-xs">
+              <Calendar className="size-3.5 text-secondary" />
+              <span>Opened: <strong className="text-navy">{openedTimestamp || post.publishDate}</strong></span>
             </span>
-            <span className="flex items-center gap-1 text-muted-foreground">
-              <Clock className="size-3.5" /> {post.readTime}
+            <span className="flex items-center gap-1.5 rounded-full bg-white px-3 py-1 text-navy border border-border shadow-xs">
+              <Clock className="size-3.5 text-secondary" />
+              <span>{post.readTime}</span>
             </span>
           </div>
 
@@ -65,16 +84,27 @@ function BlogPostDetail() {
           </p>
 
           {/* Author Badge */}
-          <div className="mt-6 flex items-center gap-3 border-t border-border/60 pt-6">
-            <img
-              src={post.author.avatar}
-              alt={post.author.name}
-              className="size-11 rounded-full object-cover shadow-sm ring-2 ring-brand/30"
-            />
-            <div>
-              <p className="text-sm font-bold text-navy">{post.author.name}</p>
-              <p className="text-xs text-muted-foreground">{post.author.role}</p>
+          <div className="mt-6 flex items-center justify-between border-t border-border/60 pt-6">
+            <div className="flex items-center gap-3">
+              <img
+                src={post.author.avatar}
+                alt={post.author.name}
+                className="size-11 rounded-full object-cover shadow-sm ring-2 ring-brand/30"
+              />
+              <div>
+                <p className="text-sm font-bold text-navy">{post.author.name}</p>
+                <p className="text-xs text-muted-foreground">{post.author.role}</p>
+              </div>
             </div>
+
+            <a
+              href="https://wa.me/917607696315"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-2 rounded-full bg-emerald-600 px-4 py-2 text-xs font-bold text-white shadow-sm hover:bg-emerald-700 transition"
+            >
+              Chat with Author
+            </a>
           </div>
         </div>
       </article>
@@ -192,6 +222,7 @@ function BlogPostDetail() {
                 key={b.slug}
                 to="/blog/$slug"
                 params={{ slug: b.slug }}
+                onClick={() => window.scrollTo(0, 0)}
                 className="group flex flex-col justify-between overflow-hidden rounded-3xl border border-border bg-white p-5 transition hover:-translate-y-1 hover:shadow-elegant"
               >
                 <div>
