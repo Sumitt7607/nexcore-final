@@ -1,0 +1,16 @@
+{
+  "projectId": "prj_Gg9v6rWgrET8zaVpMQn45SNcWUhu",
+  "orgId": "team_qqAlrzl0QbGrDKF2AjxmGBJo",
+  "projectName": "nexcore-technologies",
+  "settings": {
+    "createdAt": 1784974184906,
+    "framework": "tanstack-start-lovable",
+    "devCommand": null,
+    "installCommand": null,
+    "buildCommand": null,
+    "outputDirectory": null,
+    "rootDirectory": null,
+    "directoryListing": false,
+    "nodeVersion": "24.x"
+  }
+}

@@ -57,8 +57,8 @@ export function SiteFooter() {
               <li><Link to="/portfolio" className="text-white/70 hover:text-brand">Portfolio</Link></li>
               <li><Link to="/blog" className="text-white/70 hover:text-brand">Blog</Link></li>
               <li><Link to="/contact" className="text-white/70 hover:text-brand">Contact</Link></li>
-              <li><Link to="/privacy" className="text-white/70 hover:text-brand">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="text-white/70 hover:text-brand">Terms</Link></li>
+              <li><a href="#" className="text-white/70 hover:text-brand">Privacy Policy</a></li>
+              <li><a href="#" className="text-white/70 hover:text-brand">Terms</a></li>
             </ul>
           </div>
 
