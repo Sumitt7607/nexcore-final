@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import { CTABanner } from "@/components/site/HomeSections";
 
 const projects = [
@@ -270,12 +270,15 @@ function Portfolio() {
                         <span className="size-1.5 rounded-full bg-green-500" />
                         Ad Campaign
                       </span>
-                      <Link
-                        to="/contact"
-                        className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary transition hover:text-navy"
+                      <a
+                        href="https://wa.me/917607696315?text=Hi%2C%20I%27m%20interested%20in%20Google%20Ads%20services.%20Can%20I%20get%20more%20details%3F"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-green-600 hover:bg-green-700 text-white px-3.5 py-1.5 text-xs font-bold shadow-md hover:shadow-lg transition transform active:scale-95"
                       >
-                        Work with us <ArrowRight className="size-3.5" />
-                      </Link>
+                        <MessageCircle className="size-3.5" />
+                        Get More Details
+                      </a>
                     </>
                   )}
                 </div>

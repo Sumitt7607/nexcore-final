@@ -716,12 +716,15 @@ export function PortfolioPreview() {
                     <span className="text-[10px] sm:text-xs font-semibold text-muted-foreground">
                       Ad Campaign
                     </span>
-                    <Link
-                      to="/portfolio"
-                      className="inline-flex items-center gap-1 text-[10px] sm:text-xs font-bold text-secondary transition group-hover:text-navy group-hover:underline"
+                    <a
+                      href="https://wa.me/917607696315?text=Hi%2C%20I%27m%20interested%20in%20Google%20Ads%20services.%20Can%20I%20get%20more%20details%3F"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 rounded-full bg-green-600 hover:bg-green-700 text-white px-2.5 sm:px-3.5 py-1 text-[10px] sm:text-xs font-bold shadow-md hover:shadow-lg transition transform active:scale-95"
                     >
-                      View <ArrowRight className="size-3 sm:size-3.5" />
-                    </Link>
+                      <MessageCircle className="size-3 sm:size-3.5" />
+                      Get More Details
+                    </a>
                   </>
                 )}
               </div>
