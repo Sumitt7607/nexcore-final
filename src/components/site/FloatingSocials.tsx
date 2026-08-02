@@ -1,0 +1,67 @@
+import { Facebook, Instagram, Linkedin, Youtube, MapPin, MessageCircle } from "lucide-react";
+
+export function FloatingSocials() {
+  const socials = [
+    {
+      name: "Facebook",
+      icon: Facebook,
+      href: "https://facebook.com",
+      color: "bg-[#1877F2] text-white hover:shadow-[#1877F2]/40",
+    },
+    {
+      name: "Instagram",
+      icon: Instagram,
+      href: "https://instagram.com",
+      color: "bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white hover:shadow-[#ee2a7b]/40",
+    },
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      href: "https://linkedin.com",
+      color: "bg-[#0A66C2] text-white hover:shadow-[#0A66C2]/40",
+    },
+    {
+      name: "YouTube",
+      icon: Youtube,
+      href: "https://youtube.com",
+      color: "bg-[#FF0000] text-white hover:shadow-[#FF0000]/40",
+    },
+    {
+      name: "Location",
+      icon: MapPin,
+      href: "/contact",
+      color: "bg-[#EA4335] text-white hover:shadow-[#EA4335]/40",
+    },
+    {
+      name: "WhatsApp",
+      icon: MessageCircle,
+      href: "https://wa.me/917607696315",
+      color: "bg-[#25D366] text-white hover:shadow-[#25D366]/40",
+    },
+  ];
+
+  return (
+    <div className="fixed right-3 top-1/2 z-40 flex -translate-y-1/2 flex-col gap-2.5 sm:right-4 sm:gap-3">
+      {socials.map((s) => {
+        const Icon = s.icon;
+        const isExternal = s.href.startsWith("http");
+
+        return (
+          <a
+            key={s.name}
+            href={s.href}
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noopener noreferrer" : undefined}
+            aria-label={s.name}
+            className={`group relative grid size-10 place-items-center rounded-full shadow-md transition-all duration-300 hover:scale-110 sm:size-11 ${s.color}`}
+          >
+            <Icon className="size-5 transition-transform duration-200 group-hover:scale-110" />
+            <span className="pointer-events-none absolute right-full mr-3 whitespace-nowrap rounded-lg bg-navy px-2.5 py-1 text-xs font-semibold text-white opacity-0 shadow-lg transition-opacity duration-200 group-hover:opacity-100">
+              {s.name}
+            </span>
+          </a>
+        );
+      })}
+    </div>
+  );
+}
