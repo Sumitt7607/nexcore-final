@@ -10,24 +10,27 @@ export function SiteFooter() {
       <div className="container-p mx-auto max-w-7xl py-16">
         <div className="grid gap-12 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <Link to="/" className="flex items-center gap-2">
-              <span className="grid size-9 place-items-center rounded-xl bg-brand text-navy">
-                <Sparkles className="size-5" strokeWidth={2.5} />
-              </span>
-              <span className="font-display text-lg font-bold">Nexcore<span className="text-brand">.</span></span>
+            <Link to="/" className="inline-block">
+              <img src="/logo.png" alt="Nexcore Technologies" className="h-32 sm:h-36 w-auto object-contain -my-6" />
             </Link>
             <p className="mt-4 max-w-xs text-sm text-white/70">
               A premium digital agency helping brands ship stunning websites, run profitable ads and scale online.
             </p>
             <div className="mt-6 flex gap-2">
-              {[Facebook, Instagram, Linkedin, Twitter, Youtube].map((Icon, i) => (
+              {[
+                { name: "Facebook", Icon: Facebook, href: "https://www.facebook.com/share/1DaCrvDXK4/" },
+                { name: "Instagram", Icon: Instagram, href: "https://www.instagram.com/nexcore.marketing?igsh=MXUzeWx3N3NidnBpMA==" },
+                { name: "LinkedIn", Icon: Linkedin, href: "https://www.linkedin.com/company/nexcore-technologies-india/" },
+              ].map((s) => (
                 <a
-                  key={i}
-                  href="#"
+                  key={s.name}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.name}
                   className="grid size-9 place-items-center rounded-full border border-white/15 text-white/80 transition hover:border-brand hover:bg-brand hover:text-navy"
-                  aria-label="Social link"
                 >
-                  <Icon className="size-4" />
+                  <s.Icon className="size-4" />
                 </a>
               ))}
             </div>
@@ -57,8 +60,8 @@ export function SiteFooter() {
               <li><Link to="/portfolio" className="text-white/70 hover:text-brand">Portfolio</Link></li>
               <li><Link to="/blog" className="text-white/70 hover:text-brand">Blog</Link></li>
               <li><Link to="/contact" className="text-white/70 hover:text-brand">Contact</Link></li>
-              <li><a href="#" className="text-white/70 hover:text-brand">Privacy Policy</a></li>
-              <li><a href="#" className="text-white/70 hover:text-brand">Terms</a></li>
+              <li><Link to="/privacy" className="text-white/70 hover:text-brand">Privacy Policy</Link></li>
+              <li><Link to="/terms" className="text-white/70 hover:text-brand">Terms</Link></li>
             </ul>
           </div>
 

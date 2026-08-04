@@ -194,12 +194,14 @@ function BlogPostDetail() {
             Book a free 30-minute consultation with Nexcore operators to review your website, ads, or brand identity.
           </p>
           <div className="mt-6 flex flex-wrap items-center gap-4">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-bold text-navy shadow-lg transition hover:brightness-95"
+            <a
+              href="https://wa.me/917607696315?text=Hi%20Nexcore%2C%20I%20read%20your%20blog%20and%20want%20to%20book%20a%20free%20consultation%20for%20my%20business."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-sm font-bold text-white shadow-lg transition hover:bg-green-700"
             >
-              Book Free Consultation <ArrowRight className="size-4" />
-            </Link>
+              💬 WhatsApp Now <ArrowRight className="size-4" />
+            </a>
             <a
               href="https://wa.me/917607696315?text=Hi%2C%20I%20read%20your%20blog%20post%20and%20want%20to%20discuss%20growing%20my%20business."
               target="_blank"

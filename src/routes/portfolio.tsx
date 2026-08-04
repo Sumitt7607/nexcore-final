@@ -242,12 +242,14 @@ function Portfolio() {
                         <span className="size-2 rounded-full bg-green-400 animate-pulse" />
                         Live Website ↗
                       </a>
-                      <Link
-                        to="/contact"
-                        className="inline-flex items-center gap-1.5 rounded-full bg-red-600 hover:bg-red-700 text-white px-3.5 sm:px-4 py-1.5 text-xs font-bold shadow-md hover:shadow-lg transition transform active:scale-95"
+                      <a
+                        href="https://wa.me/917607696315?text=Hi%20Nexcore%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20for%20my%20website."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-green-600 hover:bg-green-700 text-white px-3.5 sm:px-4 py-1.5 text-xs font-bold shadow-md hover:shadow-lg transition transform active:scale-95"
                       >
-                        Book free Demo
-                      </Link>
+                        <MessageCircle className="size-3.5" /> WhatsApp Now
+                      </a>
                     </>
                   ) : p.tag === "Branding" ? (
                     <>

@@ -4,7 +4,7 @@ import {
   BarChart3, LineChart, Globe, PenTool, Video, Bot,
   Check, Sparkles, TrendingUp, Users, Award, Clock, Quote,
   Phone, Mail, MapPin, MessageCircle, Plus, Minus,
-  Facebook, Instagram, Youtube, ShieldCheck,
+  Facebook, Instagram, Youtube, ShieldCheck, Linkedin,
 } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { serviceGroups } from "@/lib/services-data";
@@ -40,40 +40,26 @@ export function Hero() {
             <span className="grid size-5 place-items-center rounded-full bg-brand text-navy"><Sparkles className="size-3" /></span>
             Trusted by 150+ growing brands worldwide
           </div>
-          <h1 className="mt-6 font-display text-5xl font-bold leading-[1.05] tracking-tight text-navy sm:text-6xl lg:text-7xl">
-            Build stunning websites that <span className="text-gradient">grow your business</span>.
+          <h1 className="mt-6 font-display text-4xl font-bold leading-tight tracking-tight text-navy sm:text-5xl lg:text-6xl">
+            Grow Faster With <span className="text-gradient">Websites & Digital Marketing</span> That Actually Deliver Results.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
             We help startups, brands and enterprises scale with high-performing websites,
             Google Ads, Meta Ads, SEO, branding and digital solutions that generate measurable results.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/contact" className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-navy shadow-elegant transition hover:brightness-95">
-              Get Free Quote <ArrowRight className="size-4 transition group-hover:translate-x-0.5" />
-            </Link>
-            <Link to="/contact" className="inline-flex items-center gap-2 rounded-full bg-secondary px-6 py-3.5 text-sm font-semibold text-white shadow-blue transition hover:brightness-110">
-              Book Free Consultation
-            </Link>
+            <a href="tel:7607696315" className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-navy shadow-elegant transition hover:brightness-95">
+              <Phone className="size-4" /> Call Now
+            </a>
+            <a href="https://wa.me/917607696315?text=Hi%20Nexcore%2C%20I%20want%20a%20free%20consultation%20for%20my%20business." target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-green-600 px-6 py-3.5 text-sm font-semibold text-white shadow-blue transition hover:bg-green-700">
+              <MessageCircle className="size-4" /> WhatsApp Now
+            </a>
             <Link to="/portfolio" className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-white px-6 py-3.5 text-sm font-semibold text-navy transition hover:border-navy">
               View Portfolio
             </Link>
           </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3">
-            {[
-              { icon: Star, label: "150+ Projects Delivered" },
-              { icon: ShieldCheck, label: "98% Client Satisfaction" },
-              { icon: Zap, label: "Fast Delivery" },
-              { icon: Search, label: "SEO Optimized" },
-              { icon: Target, label: "Google Ads Certified" },
-              { icon: BarChart3, label: "Meta Advertising" },
-            ].map((b, i) => (
-              <div key={i} className="flex items-center gap-2 rounded-2xl border border-navy/10 bg-white/70 px-3 py-2.5 text-xs font-medium text-navy backdrop-blur">
-                <b.icon className="size-4 text-secondary" />
-                {b.label}
-              </div>
-            ))}
-          </div>
+
         </div>
 
         {/* Right — floating dashboard mocks */}
@@ -83,9 +69,9 @@ export function Hero() {
             <div className="absolute right-0 top-8 w-[88%] animate-float rounded-2xl border border-navy/10 bg-white p-3 shadow-elegant">
               <div className="mb-2 flex gap-1.5"><span className="size-2.5 rounded-full bg-red-400" /><span className="size-2.5 rounded-full bg-amber-400" /><span className="size-2.5 rounded-full bg-emerald-400" /></div>
               <div className="rounded-xl bg-gradient-to-br from-navy to-secondary p-5 text-white">
-                <p className="text-xs uppercase tracking-wider text-brand">Nexcore · Analytics</p>
-                <p className="mt-2 font-display text-2xl font-bold">₹ 12.4L revenue</p>
-                <p className="text-xs text-white/70">+38% vs last month</p>
+                <p className="text-xs uppercase tracking-wider text-brand">Nexcore · Performance</p>
+                <p className="mt-2 font-display text-2xl font-bold">₹ 1 Lakh+ Revenue</p>
+                <p className="text-xs text-white/70">+142% vs last quarter</p>
                 <div className="mt-4 flex h-16 items-end gap-1.5">
                   {[30, 50, 42, 68, 55, 78, 90, 65, 88, 72, 95, 80].map((h, i) => (
                     <div key={i} className="flex-1 rounded-sm bg-white/20">
@@ -119,17 +105,27 @@ export function Hero() {
 
             {/* Conversion card */}
             <div className="absolute -bottom-2 left-6 w-64 animate-float rounded-2xl border border-navy/10 bg-white p-4 shadow-elegant" style={{ animationDelay: "-2s" }}>
-              <p className="text-xs text-muted-foreground">Conversions today</p>
-              <p className="mt-1 font-display text-3xl font-bold text-navy">1,284</p>
+              <p className="text-xs text-muted-foreground">Conversions Today</p>
+              <p className="mt-1 font-display text-3xl font-bold text-navy">120+</p>
               <div className="mt-2 flex items-center gap-2">
                 <span className="rounded-full bg-brand px-2 py-0.5 text-[10px] font-semibold text-navy">+12.4%</span>
                 <span className="text-xs text-muted-foreground">vs yesterday</span>
               </div>
               <div className="mt-3 flex -space-x-2">
-                {["A", "B", "C", "D"].map((c, i) => (
-                  <div key={c} className={`grid size-7 place-items-center rounded-full border-2 border-white text-[10px] font-bold text-white ${["bg-secondary", "bg-navy", "bg-brand text-navy", "bg-secondary/80"][i]}`}>{c}</div>
+                {[
+                  "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=120",
+                  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=120",
+                  "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=120",
+                  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=120",
+                ].map((src, i) => (
+                  <img
+                    key={i}
+                    src={src}
+                    alt="Client"
+                    className="size-7 rounded-full border-2 border-white object-cover shadow-sm"
+                  />
                 ))}
-                <div className="grid size-7 place-items-center rounded-full border-2 border-white bg-surface text-[10px] font-bold text-navy">+9</div>
+                <div className="grid size-7 place-items-center rounded-full border-2 border-white bg-surface text-[10px] font-bold text-navy">+95</div>
               </div>
             </div>
 
@@ -275,18 +271,25 @@ export function Services() {
                   {s.desc}
                 </p>
 
-                <div className="mt-8 flex flex-wrap items-center gap-4 text-xs font-semibold">
+                <div className="mt-8 flex flex-wrap items-center gap-3 text-xs font-semibold">
                   <Link
                     to="/contact"
-                    className="rounded-full bg-red-600 px-6 py-3 text-white transition hover:bg-red-700 shadow-md hover:shadow-lg text-sm font-semibold flex items-center gap-2"
+                    className="rounded-full bg-red-600 px-5 py-2.5 text-white transition hover:bg-red-700 shadow-md hover:shadow-lg text-sm font-semibold flex items-center gap-1.5"
                   >
                     Get Free Demo
                   </Link>
                   <Link
-                    to="/portfolio"
-                    className="rounded-full bg-black px-6 py-3 text-white transition hover:bg-zinc-800 shadow-md hover:shadow-lg text-sm font-semibold flex items-center gap-2"
+                    to="/services/$slug"
+                    params={{ slug: s.slug }}
+                    className="rounded-full bg-brand px-5 py-2.5 text-navy transition hover:bg-brand/90 shadow-md hover:shadow-lg text-sm font-semibold flex items-center gap-1.5"
                   >
-                    See Past Results <ArrowRight className="size-4" />
+                    See Pricings <ArrowRight className="size-4" />
+                  </Link>
+                  <Link
+                    to="/portfolio"
+                    className="rounded-full bg-black px-5 py-2.5 text-white transition hover:bg-zinc-800 shadow-md hover:shadow-lg text-sm font-semibold flex items-center gap-1.5"
+                  >
+                    See Portfolio
                   </Link>
                 </div>
               </div>
@@ -690,12 +693,14 @@ export function PortfolioPreview() {
                       <span className="size-1.5 sm:size-2 rounded-full bg-green-400 animate-pulse" />
                       Live Website ↗
                     </a>
-                    <Link
-                      to="/contact"
-                      className="inline-flex items-center gap-1 rounded-full bg-red-600 hover:bg-red-700 text-white px-2.5 sm:px-3.5 py-1 text-[10px] sm:text-xs font-bold shadow-md hover:shadow-lg transition transform active:scale-95"
+                    <a
+                      href="https://wa.me/917607696315?text=Hi%20Nexcore%2C%20I%27d%20like%20to%20book%20a%20free%20website%20demo."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 rounded-full bg-green-600 hover:bg-green-700 text-white px-2.5 sm:px-3.5 py-1 text-[10px] sm:text-xs font-bold shadow-md hover:shadow-lg transition transform active:scale-95"
                     >
-                      Book free Demo
-                    </Link>
+                      <MessageCircle className="size-3.5" /> WhatsApp Now
+                    </a>
                   </>
                 ) : p.tag === "Branding" ? (
                   <>
@@ -754,8 +759,8 @@ export function CTABanner() {
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
-            <Link to="/contact" className="rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-navy shadow-elegant hover:brightness-95">Get Free Quote</Link>
-            <Link to="/contact" className="rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/10">Schedule Consultation</Link>
+            <a href="tel:7607696315" className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-navy shadow-elegant hover:brightness-95"><Phone className="size-4" /> Call Now</a>
+            <a href="https://wa.me/917607696315?text=Hi%20Nexcore%2C%20I%27m%20interested%20in%20your%20services.%20Can%20we%20schedule%20a%20free%20consultation%3F" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur hover:bg-white/10"><MessageCircle className="size-4" /> WhatsApp Now</a>
           </div>
         </div>
       </div>
@@ -987,6 +992,67 @@ export function FAQ() {
 
 /* ---------------- Contact ---------------- */
 export function ContactBlock() {
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    service: "Website Development",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.phone) {
+      setStatus("error");
+      setErrorMsg("Please fill in your name, email, and phone number.");
+      return;
+    }
+
+    setStatus("submitting");
+    setErrorMsg("");
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/nexcoretechnologies.team@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          Name: formData.name,
+          Company: formData.company || "N/A",
+          Email: formData.email,
+          Phone: formData.phone,
+          Service: formData.service,
+          Message: formData.message || "N/A",
+          _subject: `New Lead from Website: ${formData.name} (${formData.service})`,
+          _captcha: "false",
+        }),
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        setFormData({
+          name: "",
+          company: "",
+          email: "",
+          phone: "",
+          service: "Website Development",
+          message: "",
+        });
+      } else {
+        setStatus("error");
+        setErrorMsg("Failed to send message. Please try again or WhatsApp us directly.");
+      }
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg("Network error. Please check your connection or contact us via WhatsApp.");
+    }
+  };
+
   return (
     <section id="contact" className="bg-surface">
       <div className="container-p mx-auto grid max-w-7xl gap-10 py-24 lg:grid-cols-2">
@@ -997,69 +1063,143 @@ export function ContactBlock() {
             Tell us about your project. We respond within one business day with next steps and a preliminary estimate.
           </p>
           <ul className="mt-8 space-y-4 text-sm">
-            <InfoRow icon={Phone} label="+91 7607696315" />
-            <InfoRow icon={Mail} label="hello@nexcoretech.com" />
-            <InfoRow icon={MapPin} label="Global remote · HQ in Bengaluru, India" />
+            <InfoRow icon={Phone} label="+91 7607696315" href="tel:7607696315" />
+            <InfoRow icon={Mail} label="nexcoretechnologies.team@gmail.com" href="mailto:nexcoretechnologies.team@gmail.com" />
+            <InfoRow icon={MapPin} label="Greater Noida, India" />
             <InfoRow icon={Clock} label="Mon–Sat · 9am – 8pm IST" />
           </ul>
           <div className="mt-6 flex gap-3">
-            <a href="https://wa.me/917607696315" className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-sm font-semibold text-navy shadow-elegant">
-              <MessageCircle className="size-4" /> WhatsApp
-            </a>
-            <a href="#" className="inline-flex items-center gap-2 rounded-full border border-navy/15 bg-white px-5 py-3 text-sm font-semibold text-navy">
-              View on Map
+            <a href="https://wa.me/917607696315?text=Hi%20Nexcore%2C%20I%20want%20to%20discuss%20a%20project." target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-navy shadow-elegant transition hover:brightness-95">
+              <MessageCircle className="size-4" /> WhatsApp Us
             </a>
           </div>
-          <div className="mt-6 flex gap-2 text-navy/60">
-            <Facebook className="size-4" /><Instagram className="size-4" /><Youtube className="size-4" />
+          <div className="mt-6 flex items-center gap-4 text-navy/70">
+            <a href="https://www.facebook.com/share/1DaCrvDXK4/" target="_blank" rel="noopener noreferrer" className="transition hover:text-secondary hover:scale-110" aria-label="Facebook">
+              <Facebook className="size-5" />
+            </a>
+            <a href="https://www.instagram.com/nexcore.marketing?igsh=MXUzeWx3N3NidnBpMA==" target="_blank" rel="noopener noreferrer" className="transition hover:text-secondary hover:scale-110" aria-label="Instagram">
+              <Instagram className="size-5" />
+            </a>
+            <a href="https://www.linkedin.com/company/nexcore-technologies-india/" target="_blank" rel="noopener noreferrer" className="transition hover:text-secondary hover:scale-110" aria-label="LinkedIn">
+              <Linkedin className="size-5" />
+            </a>
           </div>
         </div>
 
-        <form className="rounded-3xl border border-border bg-white p-6 shadow-soft lg:p-8" onSubmit={(e) => e.preventDefault()}>
+        <form className="rounded-3xl border border-border bg-white p-6 shadow-soft lg:p-8" onSubmit={handleSubmit}>
+          {status === "success" && (
+            <div className="mb-6 rounded-2xl bg-emerald-50 border border-emerald-200 p-4 text-emerald-800 text-sm font-medium">
+              ✅ Thank you! Your message has been sent directly to <strong>nexcoretechnologies.team@gmail.com</strong>. Our team will contact you within 24 hours.
+            </div>
+          )}
+
+          {status === "error" && (
+            <div className="mb-6 rounded-2xl bg-red-50 border border-red-200 p-4 text-red-800 text-sm font-medium">
+              ⚠️ {errorMsg}
+            </div>
+          )}
+
           <div className="grid gap-4 sm:grid-cols-2">
-            <Field label="Name" placeholder="Jane Doe" />
-            <Field label="Company" placeholder="Acme Inc." />
-            <Field label="Email" type="email" placeholder="jane@acme.com" />
-            <Field label="Phone" placeholder="+91 99999 99999" />
             <div>
+              <label className="mb-1.5 block text-xs font-semibold text-navy">Name *</label>
+              <input
+                type="text"
+                required
+                placeholder="Jane Doe"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="w-full rounded-xl border border-border bg-white px-3 py-2.5 text-sm focus:border-secondary focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="mb-1.5 block text-xs font-semibold text-navy">Company</label>
+              <input
+                type="text"
+                placeholder="Acme Inc."
+                value={formData.company}
+                onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                className="w-full rounded-xl border border-border bg-white px-3 py-2.5 text-sm focus:border-secondary focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="mb-1.5 block text-xs font-semibold text-navy">Email *</label>
+              <input
+                type="email"
+                required
+                placeholder="jane@acme.com"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="w-full rounded-xl border border-border bg-white px-3 py-2.5 text-sm focus:border-secondary focus:outline-none"
+              />
+            </div>
+            <div>
+              <label className="mb-1.5 block text-xs font-semibold text-navy">Phone *</label>
+              <input
+                type="tel"
+                required
+                placeholder="+91 7607696315"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                className="w-full rounded-xl border border-border bg-white px-3 py-2.5 text-sm focus:border-secondary focus:outline-none"
+              />
+            </div>
+            <div className="sm:col-span-2">
               <label className="mb-1.5 block text-xs font-semibold text-navy">Service required</label>
-              <select className="w-full rounded-xl border border-border bg-white px-3 py-2.5 text-sm focus:border-secondary focus:outline-none">
+              <select
+                value={formData.service}
+                onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                className="w-full rounded-xl border border-border bg-white px-3 py-2.5 text-sm focus:border-secondary focus:outline-none"
+              >
                 <option>Website Development</option>
                 <option>Google Ads Management</option>
                 <option>Meta Ads Management</option>
+                <option>Video Editing & Creative Ads</option>
                 <option>SEO Services</option>
-                <option>Brand Identity</option>
-                <option>Custom Software</option>
-              </select>
-            </div>
-            <div>
-              <label className="mb-1.5 block text-xs font-semibold text-navy">Budget</label>
-              <select className="w-full rounded-xl border border-border bg-white px-3 py-2.5 text-sm focus:border-secondary focus:outline-none">
-                <option>Under $2k</option>
-                <option>$2k – $5k</option>
-                <option>$5k – $15k</option>
-                <option>$15k+</option>
+                <option>Brand Identity & Design</option>
+                <option>Custom Software Development</option>
               </select>
             </div>
           </div>
           <div className="mt-4">
             <label className="mb-1.5 block text-xs font-semibold text-navy">Message</label>
-            <textarea rows={5} placeholder="Tell us about your goals…" className="w-full resize-none rounded-xl border border-border bg-white px-3 py-2.5 text-sm focus:border-secondary focus:outline-none" />
+            <textarea
+              rows={5}
+              placeholder="Tell us about your project requirements & goals…"
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+              className="w-full resize-none rounded-xl border border-border bg-white px-3 py-2.5 text-sm focus:border-secondary focus:outline-none"
+            />
           </div>
-          <button className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-navy shadow-elegant transition hover:brightness-95">
-            Send request <ArrowRight className="size-4" />
+          <button
+            type="submit"
+            disabled={status === "submitting"}
+            className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-navy shadow-elegant transition hover:brightness-95 disabled:opacity-50"
+          >
+            {status === "submitting" ? (
+              <>Sending Request...</>
+            ) : (
+              <>
+                Send Request <ArrowRight className="size-4" />
+              </>
+            )}
           </button>
-          <p className="mt-3 text-center text-xs text-muted-foreground">By submitting, you agree to our privacy policy.</p>
+          <p className="mt-3 text-center text-xs text-muted-foreground">By submitting, your request will be delivered to nexcoretechnologies.team@gmail.com.</p>
         </form>
       </div>
     </section>
   );
 }
-function InfoRow({ icon: Icon, label }: { icon: any; label: string }) {
+function InfoRow({ icon: Icon, label, href }: { icon: any; label: string; href?: string }) {
   return (
     <li className="flex items-center gap-3">
       <span className="grid size-9 place-items-center rounded-xl bg-white text-secondary shadow-soft"><Icon className="size-4" /></span>
-      <span className="text-foreground/90">{label}</span>
+      {href ? (
+        <a href={href} className="text-foreground/90 hover:text-secondary hover:underline transition">
+          {label}
+        </a>
+      ) : (
+        <span className="text-foreground/90">{label}</span>
+      )}
     </li>
   );
 }

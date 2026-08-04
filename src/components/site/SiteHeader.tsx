@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, ChevronDown, Sparkles, Phone } from "lucide-react";
+import { Menu, X, ChevronDown, Sparkles, Phone, MessageCircle } from "lucide-react";
 import { serviceGroups } from "@/lib/services-data";
 import { cn } from "@/lib/utils";
 
@@ -100,16 +100,18 @@ export function SiteHeader() {
 
         <div className="hidden items-center gap-2 lg:flex">
           <a
-            href="tel:7607696315"
-            className="rounded-full border border-navy/15 px-4 py-2 text-sm font-semibold text-navy transition hover:border-navy hover:bg-navy hover:text-white"
+            href="https://wa.me/917607696315?text=Hi%20Nexcore%2C%20I%27m%20interested%20in%20your%20services.%20Can%20we%20connect%3F"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-green-600 px-4 py-2 text-sm font-semibold text-green-700 transition hover:bg-green-600 hover:text-white"
           >
-            Book Consultation
+            <MessageCircle className="size-4" /> WhatsApp Now
           </a>
           <a
             href="tel:7607696315"
-            className="rounded-full bg-brand px-4 py-2 text-sm font-semibold text-navy shadow-elegant transition hover:brightness-95"
+            className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-navy shadow-elegant transition hover:brightness-95"
           >
-            Get Free Quote
+            <Phone className="size-4" /> Call Now
           </a>
         </div>
 
@@ -164,18 +166,20 @@ export function SiteHeader() {
             </details>
             <div className="flex gap-2 pt-3">
               <a
-                href="tel:7607696315"
-                className="flex-1 rounded-full border border-navy/15 px-4 py-2 text-center text-sm font-semibold text-navy"
+                href="https://wa.me/917607696315?text=Hi%20Nexcore%2C%20I%27m%20interested%20in%20your%20services.%20Can%20we%20connect%3F"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full border border-green-600 px-4 py-2 text-sm font-semibold text-green-700"
                 onClick={() => setOpen(false)}
               >
-                Book Consultation
+                <MessageCircle className="size-4" /> WhatsApp
               </a>
               <a
                 href="tel:7607696315"
-                className="flex-1 rounded-full bg-brand px-4 py-2 text-center text-sm font-semibold text-navy"
+                className="flex-1 inline-flex items-center justify-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-navy"
                 onClick={() => setOpen(false)}
               >
-                Get Free Quote
+                <Phone className="size-4" /> Call Now
               </a>
             </div>
           </div>

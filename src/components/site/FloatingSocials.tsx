@@ -5,19 +5,19 @@ export function FloatingSocials() {
     {
       name: "LinkedIn",
       icon: Linkedin,
-      href: "https://linkedin.com",
+      href: "https://www.linkedin.com/company/nexcore-technologies-india/",
       color: "bg-[#0A66C2] text-white hover:shadow-[#0A66C2]/40",
     },
     {
       name: "Instagram",
       icon: Instagram,
-      href: "https://instagram.com",
+      href: "https://www.instagram.com/nexcore.marketing?igsh=MXUzeWx3N3NidnBpMA==",
       color: "bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white hover:shadow-[#ee2a7b]/40",
     },
     {
       name: "Facebook",
       icon: Facebook,
-      href: "https://facebook.com",
+      href: "https://www.facebook.com/share/1DaCrvDXK4/",
       color: "bg-[#1877F2] text-white hover:shadow-[#1877F2]/40",
     },
     {
