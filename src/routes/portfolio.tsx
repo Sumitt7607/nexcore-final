@@ -164,16 +164,17 @@ function Portfolio() {
   return (
     <>
       <section className="bg-hero-mesh">
-        <div className="container-p mx-auto max-w-7xl py-24 text-center">
+        <div className="container-p mx-auto max-w-7xl py-16 sm:py-24 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">Portfolio</p>
-          <h1 className="mt-3 font-display text-5xl font-bold text-navy lg:text-6xl">Work we're proud of.</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+          <h1 className="mt-3 font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-navy">Work we're proud of.</h1>
+          <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-muted-foreground">
             Real websites, ad campaigns and software we built for our clients — with real, measurable results.
           </p>
         </div>
       </section>
 
-      <div className="container-p mx-auto max-w-7xl py-16">
+      <div className="container-p mx-auto max-w-7xl py-10 sm:py-16">
+        {/* Filter buttons — scrollable on mobile */}
         <div className="flex flex-wrap justify-center gap-2">
           {filters.map((f) => (
             <button
@@ -190,70 +191,70 @@ function Portfolio() {
           ))}
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-8 lg:grid-cols-3">
+        {/* Grid — 1 col on mobile, 2 on sm, 3 on lg */}
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((p) => (
             <div
               key={p.title}
-              className="group flex flex-col overflow-hidden rounded-2xl sm:rounded-3xl border border-border bg-white shadow-sm transition-all hover:-translate-y-1.5 hover:border-brand hover:shadow-2xl"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all hover:-translate-y-1 hover:border-brand hover:shadow-xl"
             >
               {/* Browser chrome header - Only for Website */}
               {p.tag === "Website" && (
-                <div className="flex items-center gap-1.5 bg-slate-900 px-4 py-2.5">
-                  <div className="size-3 rounded-full bg-red-500/80" />
-                  <div className="size-3 rounded-full bg-yellow-500/80" />
-                  <div className="size-3 rounded-full bg-green-500/80" />
-                  <div className="ml-3 flex-1 truncate rounded-md bg-white/10 px-3 py-0.5 font-mono text-[10px] text-white/50">
+                <div className="flex items-center gap-1.5 bg-slate-900 px-3 py-2">
+                  <div className="size-2.5 rounded-full bg-red-500/80" />
+                  <div className="size-2.5 rounded-full bg-yellow-500/80" />
+                  <div className="size-2.5 rounded-full bg-green-500/80" />
+                  <div className="ml-2 flex-1 truncate rounded-md bg-white/10 px-2 py-0.5 font-mono text-[9px] text-white/50">
                     https://{p.url}
                   </div>
                 </div>
               )}
 
               {/* Screenshot / Graphic preview */}
-              <div className={`relative ${p.tag === "Branding" ? "h-72" : "h-60"} overflow-hidden bg-slate-100`}>
+              <div className={`relative ${p.tag === "Branding" ? "h-52 sm:h-64" : "h-44 sm:h-56"} overflow-hidden bg-slate-100`}>
                 <img
                   src={p.image}
                   alt={p.title}
                   className={`h-full w-full ${p.tag === "Branding" ? "object-cover object-center" : "object-cover object-top"} transition duration-700 group-hover:scale-105`}
                 />
-                {/* Overlays */}
-                <div className="absolute right-3 top-3 rounded-full bg-navy/80 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white backdrop-blur-md">
+                <div className="absolute right-2 top-2 rounded-full bg-navy/80 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-wider text-white backdrop-blur-md">
                   {p.tag}
                 </div>
-                <div className="absolute bottom-3 left-3 rounded-full bg-brand px-3 py-1.5 text-xs font-bold text-navy shadow-md">
+                <div className="absolute bottom-2 left-2 rounded-full bg-brand px-2.5 py-1 text-[10px] font-bold text-navy shadow-md">
                   {p.metric}
                 </div>
               </div>
 
               {/* Content */}
-              <div className="flex flex-1 flex-col justify-between p-6">
+              <div className="flex flex-1 flex-col justify-between p-4 sm:p-5">
                 <div>
-                  <h3 className="font-display text-xl font-bold text-navy">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
+                  <h3 className="font-display text-base sm:text-lg font-bold text-navy">{p.title}</h3>
+                  <p className="mt-1.5 text-xs sm:text-sm leading-relaxed text-muted-foreground line-clamp-3">{p.desc}</p>
                 </div>
-                <div className="mt-6 flex items-center justify-between border-t border-border/50 pt-5">
+                <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-border/50 pt-4">
                   {p.tag === "Website" ? (
                     <>
                       <a
                         href={p.liveUrl || `https://www.${p.url}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white px-3.5 py-1.5 text-xs font-bold transition shadow-sm"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white px-3 py-1.5 text-[11px] font-bold transition shadow-sm"
                       >
-                        <span className="size-2 rounded-full bg-green-400 animate-pulse" />
+                        <span className="size-1.5 rounded-full bg-green-400 animate-pulse" />
                         Live Website ↗
                       </a>
                       <a
                         href="https://wa.me/917607696315?text=Hi%20Nexcore%2C%20I%27d%20like%20to%20book%20a%20free%20demo%20for%20my%20website."
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-full bg-green-600 hover:bg-green-700 text-white px-3.5 sm:px-4 py-1.5 text-xs font-bold shadow-md hover:shadow-lg transition transform active:scale-95"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 text-[11px] font-bold shadow-md transition active:scale-95"
                       >
-                        <MessageCircle className="size-3.5" /> WhatsApp Now
+                        <MessageCircle className="size-3" /> WhatsApp Now
                       </a>
                     </>
                   ) : p.tag === "Branding" ? (
                     <>
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-surface px-3 py-1 text-xs font-semibold text-navy">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-surface px-3 py-1 text-[11px] font-semibold text-navy">
                         <span className="size-1.5 rounded-full bg-green-500" />
                         Brand Design
                       </span>
@@ -261,14 +262,14 @@ function Portfolio() {
                         href="https://photos.google.com/u/4/share/AF1QipP-rW5OuQ4kSLLOjZYt0lSnhnnjM8X0YqeiujPMpkF8XGYfwOfu5WhEBnDsD16bHg?pli=1&pageId=none&key=c0ZkYWpmNUZodzdxczFwaTV6TmctQUNCQnNRbFdn"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-xs font-bold text-secondary transition hover:text-navy hover:underline"
+                        className="inline-flex items-center gap-1 text-[11px] font-bold text-secondary transition hover:text-navy hover:underline"
                       >
-                        See More Brands <ArrowRight className="size-3.5" />
+                        See More Brands <ArrowRight className="size-3" />
                       </a>
                     </>
                   ) : (
                     <>
-                      <span className="inline-flex items-center gap-1.5 rounded-full bg-surface px-3 py-1 text-xs font-semibold text-navy">
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-surface px-3 py-1 text-[11px] font-semibold text-navy">
                         <span className="size-1.5 rounded-full bg-green-500" />
                         Ad Campaign
                       </span>
@@ -276,10 +277,10 @@ function Portfolio() {
                         href="https://wa.me/917607696315?text=Hi%2C%20I%27m%20interested%20in%20Google%20Ads%20services.%20Can%20I%20get%20more%20details%3F"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 rounded-full bg-green-600 hover:bg-green-700 text-white px-3.5 py-1.5 text-xs font-bold shadow-md hover:shadow-lg transition transform active:scale-95"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 text-[11px] font-bold shadow-md transition active:scale-95"
                       >
-                        <MessageCircle className="size-3.5" />
-                        Get More Details
+                        <MessageCircle className="size-3" />
+                        Get Details
                       </a>
                     </>
                   )}
