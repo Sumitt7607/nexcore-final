@@ -11,7 +11,7 @@ export const getClarityId = (): string => {
   return (
     (typeof import.meta !== "undefined" && import.meta.env?.VITE_CLARITY_ID) ||
     (typeof process !== "undefined" && process.env?.VITE_CLARITY_ID) ||
-    ""
+    "xz8ant2vho"
   );
 };
 
