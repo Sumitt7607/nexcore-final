@@ -7,8 +7,9 @@ export const Route = createFileRoute("/terms")({
     meta: [
       { title: "Terms of Service — Nexcore Technologies" },
       { name: "description", content: "Terms of Service for Nexcore Technologies. Read our terms, conditions, and service agreements." },
+      { property: "og:url", content: "https://www.nexcoretech.online/terms" },
     ],
-    links: [{ rel: "canonical", href: "/terms" }],
+    links: [{ rel: "canonical", href: "https://www.nexcoretech.online/terms" }],
   }),
   component: TermsOfService,
 });

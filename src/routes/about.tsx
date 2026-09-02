@@ -1,26 +1,28 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CTABanner, ContactBlock } from "@/components/site/HomeSections";
-import { Award, Heart, Rocket, Sparkles, Target, Users } from "lucide-react";
+import { Award, Heart, Rocket, Sparkles, Target, Users, MapPin } from "lucide-react";
+import { SITE_DOMAIN } from "@/lib/locations-data";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Nexcore Technologies" },
-      { name: "description", content: "Nexcore Technologies is a premium digital agency of senior designers, engineers and marketers helping ambitious teams grow online." },
-      { property: "og:title", content: "About — Nexcore Technologies" },
-      { property: "og:description", content: "Our story, mission, values and the team behind the results." },
-      { property: "og:url", content: "/about" },
+      { title: "About Nexcore Technologies | Leading Digital & Web Agency in Delhi NCR" },
+      { name: "description", content: "Headquartered in Greater Noida, Nexcore Technologies is Delhi NCR's premier digital agency delivering custom websites, certified Google Ads, and top-ranking SEO across Noida, Delhi, Gurugram, and Faridabad." },
+      { property: "og:title", content: "About Nexcore Technologies — Delhi NCR Digital Agency" },
+      { property: "og:description", content: "Headquartered in Greater Noida, serving businesses across Delhi, Noida, Gurugram, and Faridabad with custom websites and performance marketing." },
+      { property: "og:url", content: `${SITE_DOMAIN}/about` },
+      { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/about" }],
+    links: [{ rel: "canonical", href: `${SITE_DOMAIN}/about` }],
   }),
   component: About,
 });
 
 const values = [
   { icon: Sparkles, title: "Design excellence", desc: "Premium craft in every pixel — nothing ships half-polished." },
-  { icon: Target, title: "Outcome obsessed", desc: "We design and build for measurable business impact." },
+  { icon: Target, title: "Outcome obsessed", desc: "We design and build for measurable business impact & Google Top 3 rankings." },
   { icon: Heart, title: "Radical honesty", desc: "Clear scope, straight answers and no marketing fluff." },
-  { icon: Rocket, title: "Momentum", desc: "Short sprints, quick decisions and shipping every week." },
+  { icon: Rocket, title: "Momentum", desc: "Short sprints, quick decisions and launching websites in 3-5 days." },
 ];
 const team = [
   { name: "Aarav Patel", role: "Founder & Strategy" },
@@ -29,11 +31,11 @@ const team = [
   { name: "Meera Kapoor", role: "Head of Growth" },
 ];
 const timeline = [
-  { y: "2021", t: "Nexcore founded with 3 founding members." },
-  { y: "2022", t: "Crossed 50 projects across websites and ads." },
-  { y: "2023", t: "Expanded into brand identity and video." },
-  { y: "2024", t: "Launched software & AI chatbot practice." },
-  { y: "2025", t: "150+ projects, teams across 3 cities." },
+  { y: "2021", t: "Nexcore founded in Greater Noida with 3 founding members." },
+  { y: "2022", t: "Crossed 50 projects across websites, Google Ads, and SEO in Delhi NCR." },
+  { y: "2023", t: "Expanded into full brand identity, video production, and local SEO." },
+  { y: "2024", t: "Launched custom software, CRMs & AI chatbot practice." },
+  { y: "2025", t: "150+ projects delivered across Noida, Delhi, Gurugram, and worldwide." },
 ];
 
 function About() {
@@ -41,17 +43,27 @@ function About() {
     <>
       <section className="bg-hero-mesh">
         <div className="container-p mx-auto max-w-7xl py-24 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">About Us</p>
-          <h1 className="mt-3 font-display text-5xl font-bold text-navy lg:text-6xl">A modern agency for the <span className="text-gradient">next decade</span>.</h1>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">We combine design, engineering and performance marketing to help teams launch remarkable products and grow them faster.</p>
+          <div className="inline-flex items-center gap-1.5 rounded-full bg-secondary/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-secondary">
+            <MapPin className="size-3.5" /> Greater Noida HQ · Delhi NCR
+          </div>
+          <h1 className="mt-4 font-display text-5xl font-bold text-navy lg:text-6xl">
+            A Leading Digital Agency for <span className="text-gradient">Delhi NCR & Beyond</span>.
+          </h1>
+          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+            Headquartered in Greater Noida, we combine world-class design, custom engineering, and performance marketing to help ambitious businesses across Noida, Delhi, Gurugram, and Faridabad launch high-performing websites and dominate search results.
+          </p>
         </div>
       </section>
 
       <section className="container-p mx-auto grid max-w-7xl gap-12 py-20 lg:grid-cols-2 lg:items-center">
         <div>
           <h2 className="font-display text-3xl font-bold text-navy lg:text-4xl">Our story</h2>
-          <p className="mt-4 text-muted-foreground">Nexcore began with a simple belief: that founders shouldn't have to stitch together a dozen freelancers to launch and grow. We built one senior team that handles brand, product and performance — end to end.</p>
-          <p className="mt-3 text-muted-foreground">Today we serve startups, SMEs and enterprises across the world, from stealth-mode products to publicly traded brands.</p>
+          <p className="mt-4 text-muted-foreground">
+            Nexcore Technologies was founded with a clear conviction: business owners in Delhi NCR shouldn't have to navigate overpriced agencies, junior staff, or sluggish timelines to get a high-converting website and profitable ad campaigns.
+          </p>
+          <p className="mt-3 text-muted-foreground">
+            From our Greater Noida headquarters, we have built a senior multidisciplinary team serving startups, local businesses, and enterprise brands across Noida, Connaught Place, Cyber City Gurugram, and Faridabad with fast turnaround and measurable ROI.
+          </p>
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="rounded-3xl border border-border bg-white p-6">

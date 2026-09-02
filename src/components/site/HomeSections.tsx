@@ -38,14 +38,14 @@ export function Hero() {
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
           <div className="inline-flex items-center gap-2 rounded-full border border-navy/10 bg-white/70 px-3 py-1.5 text-xs font-medium text-navy shadow-soft backdrop-blur">
             <span className="grid size-5 place-items-center rounded-full bg-brand text-navy"><Sparkles className="size-3" /></span>
-            Trusted by 150+ growing brands worldwide
+            Top-Rated Digital Agency in Delhi NCR · Noida · Gurugram · Gr. Noida
           </div>
           <h1 className="mt-6 font-display text-4xl font-bold leading-tight tracking-tight text-navy sm:text-5xl lg:text-6xl">
-            Grow Faster With <span className="text-gradient">Websites & Digital Marketing</span> That Actually Deliver Results.
+            Grow Faster With <span className="text-gradient">Websites, Ads & SEO</span> That Rank Top 3 & Deliver Results.
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            We help startups, brands and enterprises scale with high-performing websites,
-            Google Ads, Meta Ads, SEO, branding and digital solutions that generate measurable results.
+            Headquartered in Greater Noida, Nexcore Technologies engineers high-converting websites,
+            high-ROAS Google & Meta ads, and dominant Local SEO for businesses across Noida, Greater Noida, Delhi, Gurugram, and Faridabad.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href="tel:7607696315" className="group inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3.5 text-sm font-semibold text-navy shadow-elegant transition hover:brightness-95">
@@ -196,6 +196,19 @@ const homeServices = [
       "Stop wasting money on irrelevant clicks and bad leads",
       "A/B tested ad copy to get maximum calls and inquiries",
       "Clear weekly reports so you see your exact profit & ROI",
+    ],
+  },
+  {
+    slug: "seo-services",
+    icon: Search,
+    name: "SEO & Local Search",
+    badge: "Google Top 3 Rankings",
+    desc: "We get your business ranked in the Top 3 on Google Search & Google Maps across Delhi NCR.",
+    points: [
+      "Dominate high-intent searches in Delhi, Noida, Gurugram & Faridabad",
+      "Google Business Profile (GBP) & Local 3-Pack optimization",
+      "High-authority citations & on-page Schema.org rich snippets",
+      "Transparent monthly keyword ranking & organic traffic growth reports",
     ],
   },
   {
@@ -355,21 +368,22 @@ export function About() {
           </div>
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">About Nexcore</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">About Nexcore Technologies</p>
           <h2 className="mt-3 font-display text-4xl font-bold leading-tight text-navy lg:text-5xl">
-            A modern agency built for <span className="text-gradient">measurable growth</span>.
+            Delhi NCR's Premier Agency Built for <span className="text-gradient">Measurable Growth</span>.
           </h2>
           <p className="mt-5 text-muted-foreground">
-            Nexcore Technologies is a full-service digital studio combining strategy, design,
-            engineering and performance marketing under one roof. We partner with ambitious
-            teams to ship products that look world-class and perform even better.
+            Headquartered in Greater Noida, Nexcore Technologies is a full-service digital agency
+            combining strategy, UI/UX design, custom engineering, and performance marketing under one roof.
+            We partner with ambitious startups, businesses, and enterprises across Noida, Delhi, Gurugram, and Faridabad
+            to build digital assets that rank in Google Top 3 and convert visitors into revenue.
           </p>
           <ul className="mt-6 space-y-3 text-sm">
             {[
-              "Senior team — no juniors on your account",
-              "Transparent pricing and clear milestones",
-              "Dedicated project manager on every engagement",
-              "Post-launch growth and support built in",
+              "Greater Noida HQ with direct in-person consultations across Delhi NCR",
+              "Certified Google & Meta Ads specialists delivering high-ROAS campaigns",
+              "Sub-second loading websites with built-in Google SEO & SSL security",
+              "Exclusive 60% promotional discount with 2 years cloud hosting included",
             ].map((t) => (
               <li key={t} className="flex items-start gap-3">
                 <span className="mt-0.5 grid size-5 place-items-center rounded-full bg-brand text-navy"><Check className="size-3" strokeWidth={3} /></span>
@@ -959,11 +973,30 @@ export function Testimonials() {
 
 /* ---------------- FAQ ---------------- */
 const faqs = [
-  { q: "How long does a typical website project take?", a: "Most marketing websites launch in 3–5 weeks. Complex apps and e-commerce projects usually take 6–10 weeks depending on scope." },
-  { q: "Do you offer post-launch support?", a: "Yes. Every engagement includes 30 days of complimentary support, and we offer flexible monthly care plans afterwards." },
-  { q: "Which industries do you serve?", a: "We work across SaaS, e-commerce, D2C, real estate, healthcare, education and professional services worldwide." },
-  { q: "Can you handle both design and paid ads?", a: "Absolutely — that's our sweet spot. We design and build the funnel, then run performance marketing on top for compounding growth." },
-  { q: "How much does a project cost?", a: "Projects start from a few thousand USD and scale with scope. Share your goals via the contact form and we'll send a tailored quote within 24 hours." },
+  {
+    q: "How much does website development cost in Delhi NCR?",
+    a: "Our promotional business website package starts from just ₹3,500 (with our 60% discount applied), including 2 full years of cloud hosting, free domain name (1st year), 100% mobile-responsive layout, and Google SEO setup. Upgraded Growth & E-Commerce packages start at ₹7,000.",
+  },
+  {
+    q: "How long does it take to design and launch a website?",
+    a: "Standard business websites and lead generation landing pages launch in just 3 to 5 business days. Custom e-commerce platforms, web portals, and software applications typically take 7 to 14 business days.",
+  },
+  {
+    q: "Can you help our business rank in the Top 3 on Google Search & Maps?",
+    a: "Yes! We specialize in Local SEO engineered for Delhi NCR. We optimize your Google Business Profile (GBP), build high-authority local citations across Noida, Delhi, Gurugram, and Faridabad, and implement Schema.org rich snippets to help you dominate competitive local search.",
+  },
+  {
+    q: "Which areas in Delhi NCR do you provide digital services for?",
+    a: "From our Greater Noida headquarters, we serve clients across all major NCR hubs including Noida (Sector 62, 18, 63, Expressway), Greater Noida (Knowledge Park, Pari Chowk, Extension), Gurugram (Cyber City, Golf Course Road, Udyog Vihar), Delhi (Connaught Place, South Delhi, Nehru Place), and Faridabad.",
+  },
+  {
+    q: "Can we have in-person project meetings in Delhi NCR?",
+    a: "Yes, absolutely! Our team frequently visits client offices across Noida, Greater Noida, Delhi, and Gurgaon for project discovery, design reviews, and growth strategy sessions.",
+  },
+  {
+    q: "Do you handle both website development and Google/Meta Ads?",
+    a: "Yes — that is our biggest competitive advantage. We build conversion-first websites and landing pages, then drive targeted buyers directly to them through certified Google Ads and Meta (Facebook/Instagram) advertising.",
+  },
 ];
 export function FAQ() {
   const [open, setOpen] = useState<number | null>(0);
@@ -1065,7 +1098,7 @@ export function ContactBlock() {
           <ul className="mt-8 space-y-4 text-sm">
             <InfoRow icon={Phone} label="+91 7607696315" href="tel:7607696315" />
             <InfoRow icon={Mail} label="nexcoretechnologies.team@gmail.com" href="mailto:nexcoretechnologies.team@gmail.com" />
-            <InfoRow icon={MapPin} label="Greater Noida, India" />
+            <InfoRow icon={MapPin} label="Greater Noida HQ, UP (Serving Delhi, Noida, Gurugram, Faridabad & NCR)" />
             <InfoRow icon={Clock} label="Mon–Sat · 9am – 8pm IST" />
           </ul>
           <div className="mt-6 flex gap-3">

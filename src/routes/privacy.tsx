@@ -7,8 +7,9 @@ export const Route = createFileRoute("/privacy")({
     meta: [
       { title: "Privacy Policy — Nexcore Technologies" },
       { name: "description", content: "Privacy Policy for Nexcore Technologies. Learn how we collect, use, and protect your data." },
+      { property: "og:url", content: "https://www.nexcoretech.online/privacy" },
     ],
-    links: [{ rel: "canonical", href: "/privacy" }],
+    links: [{ rel: "canonical", href: "https://www.nexcoretech.online/privacy" }],
   }),
   component: PrivacyPolicy,
 });

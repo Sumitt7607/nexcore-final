@@ -20,9 +20,11 @@ import {
   Star,
   Phone,
   MessageCircle,
+  MapPin,
 } from "lucide-react";
 import { useState } from "react";
 import { getService, allServices } from "@/lib/services-data";
+import { locationHubs, SITE_DOMAIN } from "@/lib/locations-data";
 import { CTABanner, ContactBlock, Process } from "@/components/site/HomeSections";
 
 export const Route = createFileRoute("/services/$slug")({
@@ -33,17 +35,65 @@ export const Route = createFileRoute("/services/$slug")({
   },
   head: ({ loaderData, params }) => {
     const s = loaderData?.service;
-    const title = s ? `${s.name} — Nexcore Technologies` : "Service — Nexcore";
-    const desc = s?.short ?? "Premium digital service by Nexcore Technologies.";
+    const title = s
+      ? `${s.name} | Top Digital Agency in Delhi NCR — Nexcore Technologies`
+      : "Service — Nexcore";
+    const desc = s
+      ? `${s.name} by Nexcore Technologies. ${s.short} Serving high-growth businesses in Delhi NCR, Noida, Greater Noida, Gurugram, and Faridabad.`
+      : "Premium digital service by Nexcore Technologies across Delhi NCR.";
+    const canonical = `${SITE_DOMAIN}/services/${params.slug}`;
+
+    const serviceSchema = s
+      ? {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: s.name,
+          serviceType: s.name,
+          provider: {
+            "@type": "LocalBusiness",
+            name: "Nexcore Technologies",
+            url: SITE_DOMAIN,
+            telephone: "+91-7607696315",
+            address: {
+              "@type": "PostalAddress",
+              streetAddress: "Greater Noida HQ, Serving Entire Delhi NCR",
+              addressLocality: "Greater Noida",
+              addressRegion: "Delhi NCR",
+              addressCountry: "IN",
+            },
+          },
+          areaServed: [
+            { "@type": "City", name: "Delhi" },
+            { "@type": "City", name: "Noida" },
+            { "@type": "City", name: "Greater Noida" },
+            { "@type": "City", name: "Gurugram" },
+            { "@type": "City", name: "Faridabad" },
+            { "@type": "AdministrativeArea", name: "Delhi NCR" },
+          ],
+          description: desc,
+        }
+      : null;
+
     return {
       meta: [
         { title },
         { name: "description", content: desc },
         { property: "og:title", content: title },
         { property: "og:description", content: desc },
-        { property: "og:url", content: `/services/${params.slug}` },
+        { property: "og:url", content: canonical },
+        { property: "og:type", content: "website" },
       ],
-      links: [{ rel: "canonical", href: `/services/${params.slug}` }],
+      links: [{ rel: "canonical", href: canonical }],
+      scripts: [
+        ...(serviceSchema
+          ? [
+              {
+                type: "application/ld+json",
+                children: JSON.stringify(serviceSchema),
+              },
+            ]
+          : []),
+      ],
     };
   },
   component: ServicePage,
@@ -849,6 +899,50 @@ function ServicePage() {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      {/* DELHI NCR LOCATIONS SECTION */}
+      <section className="border-t border-border bg-surface py-16">
+        <div className="container-p mx-auto max-w-7xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-secondary">
+                Regional Presence
+              </p>
+              <h2 className="mt-2 font-display text-2xl font-bold text-navy sm:text-3xl">
+                {service.name} Across Delhi NCR Hubs
+              </h2>
+            </div>
+            <Link
+              to="/locations"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-secondary hover:text-navy transition"
+            >
+              View All Locations <ArrowRight className="size-3.5" />
+            </Link>
+          </div>
+
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {locationHubs.map((loc) => (
+              <Link
+                key={loc.slug}
+                to="/locations/$city/$slug"
+                params={{ city: loc.slug, slug: service.slug }}
+                className="group rounded-2xl border border-border bg-white p-5 shadow-soft transition hover:-translate-y-0.5 hover:border-brand hover:shadow-elegant"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2 font-display text-base font-bold text-navy group-hover:text-secondary transition">
+                    <MapPin className="size-4 text-secondary" />
+                    <span>{loc.name}</span>
+                  </div>
+                  <ArrowRight className="size-4 text-secondary transition group-hover:translate-x-1" />
+                </div>
+                <p className="mt-2 text-xs text-muted-foreground">
+                  {service.name} tailored for {loc.name} businesses. Top 3 Google SEO & fast delivery.
+                </p>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

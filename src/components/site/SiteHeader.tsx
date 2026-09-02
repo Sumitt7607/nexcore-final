@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, ChevronDown, Sparkles, Phone, MessageCircle } from "lucide-react";
+import { Menu, X, ChevronDown, Sparkles, Phone, MessageCircle, MapPin } from "lucide-react";
 import { serviceGroups } from "@/lib/services-data";
+import { locationHubs } from "@/lib/locations-data";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -16,6 +17,7 @@ export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [locationsOpen, setLocationsOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -80,6 +82,59 @@ export function SiteHeader() {
                     </ul>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Locations mega menu */}
+          <div
+            className="relative"
+            onMouseEnter={() => setLocationsOpen(true)}
+            onMouseLeave={() => setLocationsOpen(false)}
+          >
+            <Link
+              to="/locations"
+              className="flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-foreground/80 transition hover:text-navy"
+            >
+              Locations <ChevronDown className="size-4" />
+            </Link>
+            <div
+              className={cn(
+                "invisible absolute left-1/2 top-full z-40 -translate-x-1/2 pt-3 opacity-0 transition-all",
+                locationsOpen && "visible opacity-100",
+              )}
+            >
+              <div className="w-80 rounded-3xl border border-border bg-white p-4 shadow-elegant">
+                <div className="mb-2 flex items-center justify-between border-b border-border/60 pb-2">
+                  <span className="text-xs font-bold uppercase tracking-wider text-secondary">
+                    Delhi NCR Hubs
+                  </span>
+                  <Link
+                    to="/locations"
+                    className="text-[11px] font-semibold text-navy hover:underline"
+                  >
+                    All Locations ↗
+                  </Link>
+                </div>
+                <ul className="space-y-1">
+                  {locationHubs.map((loc) => (
+                    <li key={loc.slug}>
+                      <Link
+                        to="/locations/$city"
+                        params={{ city: loc.slug }}
+                        className="flex items-center justify-between rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 transition hover:bg-surface hover:text-secondary"
+                      >
+                        <span className="flex items-center gap-2">
+                          <MapPin className="size-3.5 text-secondary" />
+                          {loc.name}
+                        </span>
+                        <span className="text-[10px] text-muted-foreground font-normal">
+                          {loc.shortName}
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
@@ -159,6 +214,32 @@ export function SiteHeader() {
                       className="block rounded-lg px-3 py-1.5 text-sm text-foreground/80 hover:bg-surface"
                     >
                       {s.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </details>
+            <details className="rounded-lg">
+              <summary className="cursor-pointer list-none px-3 py-2 text-sm font-medium">Locations (Delhi NCR)</summary>
+              <ul className="pl-4 space-y-1">
+                <li>
+                  <Link
+                    to="/locations"
+                    onClick={() => setOpen(false)}
+                    className="block rounded-lg px-3 py-1.5 text-sm font-bold text-secondary hover:bg-surface"
+                  >
+                    📍 All Locations Directory
+                  </Link>
+                </li>
+                {locationHubs.map((loc) => (
+                  <li key={loc.slug}>
+                    <Link
+                      to="/locations/$city"
+                      params={{ city: loc.slug }}
+                      onClick={() => setOpen(false)}
+                      className="block rounded-lg px-3 py-1.5 text-sm text-foreground/80 hover:bg-surface"
+                    >
+                      {loc.name}
                     </Link>
                   </li>
                 ))}

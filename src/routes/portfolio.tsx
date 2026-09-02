@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { CTABanner } from "@/components/site/HomeSections";
+import { SITE_DOMAIN } from "@/lib/locations-data";
 
 const projects = [
   {
@@ -146,13 +147,14 @@ const filters = ["All", "Website", "Google Ads", "Branding"];
 export const Route = createFileRoute("/portfolio")({
   head: () => ({
     meta: [
-      { title: "Portfolio — Nexcore Technologies" },
-      { name: "description", content: "Real client websites, ad campaigns and software we built. See results for Career4S, Ruzann, Manshu Learning, GradeLab Studios and CR Fitness." },
-      { property: "og:title", content: "Portfolio — Nexcore" },
-      { property: "og:description", content: "Real projects. Real results. Explore our client work." },
-      { property: "og:url", content: "/portfolio" },
+      { title: "Client Portfolio & Case Studies | Nexcore Technologies (Delhi NCR)" },
+      { name: "description", content: "Explore live websites, Google Ads campaigns, and SEO case studies delivered by Nexcore Technologies for clients across Delhi, Noida, Greater Noida, and Gurugram." },
+      { property: "og:title", content: "Client Portfolio & Case Studies — Nexcore Technologies" },
+      { property: "og:description", content: "Real websites, ad campaigns and measurable results for businesses across Delhi NCR and India." },
+      { property: "og:url", content: `${SITE_DOMAIN}/portfolio` },
+      { property: "og:type", content: "website" },
     ],
-    links: [{ rel: "canonical", href: "/portfolio" }],
+    links: [{ rel: "canonical", href: `${SITE_DOMAIN}/portfolio` }],
   }),
   component: Portfolio,
 });
@@ -165,10 +167,12 @@ function Portfolio() {
     <>
       <section className="bg-hero-mesh">
         <div className="container-p mx-auto max-w-7xl py-16 sm:py-24 text-center">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">Portfolio</p>
-          <h1 className="mt-3 font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-navy">Work we're proud of.</h1>
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-secondary">Our Track Record</p>
+          <h1 className="mt-3 font-display text-3xl sm:text-5xl lg:text-6xl font-bold text-navy">
+            Work Built to <span className="text-gradient">Rank & Convert</span>.
+          </h1>
           <p className="mx-auto mt-4 max-w-2xl text-sm sm:text-base text-muted-foreground">
-            Real websites, ad campaigns and software we built for our clients — with real, measurable results.
+            Explore live websites, certified Google & Meta ad dashboards, and software we built for clients across Delhi NCR and India — with real, verifiable metrics.
           </p>
         </div>
       </section>
